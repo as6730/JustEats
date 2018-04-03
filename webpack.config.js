@@ -1,6 +1,7 @@
 var path = require("path");
 
 module.exports = {
+  context: __dirname,
   entry: "./frontend/entry.jsx",
   output: {
     path: path.resolve(__dirname, "app", "assets", "javascripts")
@@ -9,7 +10,7 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: [/\.jsx?$/],
+        test: [/\.jsx?$/, /\.js?$/],
         exclude: /(node_modules)/,
         loader: "babel-loader",
         query: {
