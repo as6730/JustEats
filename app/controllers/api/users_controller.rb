@@ -1,7 +1,7 @@
 class Api::UsersController < ApplicationController
   def index
-      @users = User.all
-      render :index
+    @users = User.all
+    render :index
   end
 
   def create
@@ -9,21 +9,21 @@ class Api::UsersController < ApplicationController
 
     if @user.save
       login_user(@user)
-      render "/api/users"
+      render :show
     else
       render json: @user.errors.full_messages, status: 422
     end
   end
 
-  # def show
-  #   if params.include?(:id)
-  #     @user = User.find(params[:id])
-  #     render "/api/users/{@user}"
-  #   else
-  #
-  #   end
-  # end
-  #
+  def show
+    if params.include?(:id)
+      @user = User.find(params[:id])
+      render :show
+    else
+      render json: @user.errors.full_messages, status: 401
+    end
+  end
+
   # def edit
   #   @user = User.find(params[:id])
   #
