@@ -26,7 +26,7 @@ class Greeting extends Component {
         <nav className="session-links">
           <Link to="/signup">Sign up</Link>
           &nbsp;
-          <Link to="/signin">Sign in</Link>
+          <Link to="/login">Sign in</Link>
         </nav>
       );
     }

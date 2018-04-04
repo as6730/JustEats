@@ -1,14 +1,21 @@
-import React from "react";
+import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
+
+// presentational component (think of it as the partial)
 
 class SessionForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "",
-      password: ""
+      firstname: "",
+      lastname: "",
+      email: "",
+      password: "",
+      username: ""
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.renderSignUp = this.renderSignUp.bind(this);
+    this.renderErrors = this.renderErrors.bind(this);
   }
 
   update(field) {
@@ -34,11 +41,47 @@ class SessionForm extends Component {
     );
   }
 
-  render() {
+  renderSignUp() {
+    if (this.props.formType === "login") return null;
     return (
       <div className="login-form-container">
-        <form onSubmit={this.handleSubmit} className="login-form-box">
-          Please {this.props.formType} or {this.props.navLink}
+        <div className="login-form">
+          <label>
+            First Name
+            <input
+              type="text"
+              value={this.state.firstname}
+              onChange={this.update("firstname")}
+            />
+          </label>
+          <br />
+          <label>
+            Last Name
+            <input
+              type="text"
+              value={this.state.lastname}
+              onChange={this.update("lastname")}
+            />
+          </label>
+          <br />
+          <label>
+            Enter email
+            <input
+              type="text"
+              value={this.state.email}
+              onChange={this.update("email")}
+            />
+          </label>
+        </div>
+      </div>
+    );
+  }
+
+  render() {
+    return (
+      <div className="login-form">
+        <form onSubmit={this.handleSubmit}>
+          {this.props.formType} or {this.props.navLink}
           {this.renderErrors()}
           <div>
             <label>
@@ -49,6 +92,7 @@ class SessionForm extends Component {
                 onChange={this.update("username")}
               />
             </label>
+            <br />
             <label>
               Password
               <input
@@ -57,6 +101,8 @@ class SessionForm extends Component {
                 onChange={this.update("password")}
               />
             </label>
+            <br />
+            {this.renderSignUp()}
             <input
               className="session-submit"
               type="submit"
