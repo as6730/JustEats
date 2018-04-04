@@ -42,7 +42,7 @@ class SessionForm extends Component {
   }
 
   renderSignUp() {
-    if (this.props.formType === "login") return null;
+    if (this.props.formType === "Sign In") return null;
     return (
       <div className="login-form-container">
         <div className="login-form">

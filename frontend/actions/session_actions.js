@@ -14,10 +14,10 @@ const receiveErrors = errors => ({
 });
 
 export const signup = user => dispatch =>
-  APIUtil.login(user).then(user => dispatch(receiveCurrentUser(user)));
+  APIUtil.signup(user).then(user => dispatch(receiveCurrentUser(user)));
 
 export const login = user => dispatch =>
   APIUtil.login(user).then(user => dispatch(receiveCurrentUser(user)));
 
 export const logout = () => dispatch =>
-  APIUtil.login().then(user => dispatch(receiveCurrentUser(null)));
+  APIUtil.logout().then(user => dispatch(receiveCurrentUser(null)));
