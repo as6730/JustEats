@@ -25,6 +25,7 @@ class Greeting extends Component {
       return (
         <nav className="session-links">
           <Link to="/signup">Sign up</Link>
+          &nbsp;
           <Link to="/signin">Sign in</Link>
         </nav>
       );
