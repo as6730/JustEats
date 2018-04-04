@@ -1,7 +1,9 @@
+// keeps track of the current user
+
 import {
   RECEIVE_CURRENT_USER,
   RECEIVE_SESSION_ERRORS
-} from "../../actions/session_actions";
+} from "../actions/session_actions";
 import merge from "lodash/merge";
 
 const _nullUser = Object.freeze({ currentUser: null });
