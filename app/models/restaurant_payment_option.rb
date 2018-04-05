@@ -1,0 +1,2 @@
+class RestaurantPaymentOption < ApplicationRecord
+end
