@@ -11,9 +11,9 @@
 
 class RestaurantPayment < ApplicationRecord
   belongs_to :restaurant,
-  class_name: :Restaurant,
-  foreign_key: :restaurant_id,
-  primary_key: :id
+    class_name: :Restaurant,
+    foreign_key: :restaurant_id,
+    primary_key: :id
 
   belongs_to :payment_option,
     class_name: :PaymentOption,
