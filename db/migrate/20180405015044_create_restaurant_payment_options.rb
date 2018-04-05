@@ -7,7 +7,7 @@ class CreateRestaurantPaymentOptions < ActiveRecord::Migration[5.1]
       t.timestamps
     end
 
-    add_index :restaurant_payment_options, :payment_option_id
+    add_index :restaurant_payment_options, [:payment_option_id, :restaurant_id], unique: true
     add_index :restaurant_payment_options, :restaurant_id
   end
 end
