@@ -10,5 +10,10 @@
 #
 
 class Photo < ApplicationRecord
-  validates :url, presence: true 
+  validates :url, presence: true
+
+  belongs_to :restaurant,
+    class_name: :Restaurant,
+    foreign_key: :restaurant_id,
+    primary_key: :id
 end
