@@ -1,8 +1,8 @@
 class CreateLocations < ActiveRecord::Migration[5.1]
   def change
     create_table :locations do |t|
-      t.double :latitude, null: false
-      t.double :longitude, null: false
+      t.float :latitude, null: false
+      t.float :longitude, null: false
       t.string :address
       t.string :neighborhood
       t.string :cross_street
