@@ -10,4 +10,13 @@
 
 class PaymentOption < ApplicationRecord
   validates :name, presence: true, uniqueness: true
+
+  has_many :restaurant_payments,
+    class_name: :RestaurantPayment,
+    foreign_key: :payment_id,
+    primary_key: :id
+
+  has_many :restaurants,
+    through: :restaurant_payments,
+    source: :restaurant
 end

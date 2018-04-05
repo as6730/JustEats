@@ -26,6 +26,15 @@ class Restaurant < ApplicationRecord
     foreign_key: :restaurant_id,
     primary_key: :id
 
+  has_many :restaurant_payments,
+    class_name: :RestaurantPayment,
+    foreign_key: :restaurant_id,
+    primary_key: :id
+
+  has_many :payment_options,
+    through: :restaurant_payments,
+    source: :payment_option
+
   has_many :cuisines,
     through: :restaurant_cuisine,
     source: :cuisine
