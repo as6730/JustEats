@@ -7,7 +7,7 @@ class CreateRestaurantTags < ActiveRecord::Migration[5.1]
       t.timestamps
     end
 
-    add_index, :restaurant_tags, [:tag_id, :restaurant_id], unique: true
+    add_index(:restaurant_tags, [:tag_id, :restaurant_id], unique: true)
     add_index, :restaurant_tags, :restaurant_id
   end
 end
