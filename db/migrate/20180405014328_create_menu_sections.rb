@@ -1,7 +1,7 @@
 class CreateMenuSections < ActiveRecord::Migration[5.1]
   def change
     create_table :menu_sections do |t|
-      t.string :title
+      t.string :title, null: false
       t.string :description
       t.integer :menu_id, null: false
 

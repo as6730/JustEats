@@ -8,7 +8,7 @@ class CreateLocations < ActiveRecord::Migration[5.1]
       t.string :cross_street
       t.string :parking_details
       t.string :location_image_url
-      t.integer :restaurant_id
+      t.integer :restaurant_id, null: false
 
       t.timestamps
     end

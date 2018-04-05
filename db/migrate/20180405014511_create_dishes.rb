@@ -4,7 +4,7 @@ class CreateDishes < ActiveRecord::Migration[5.1]
       t.string :name, null: false
       t.string :price, null: false
       t.string :description
-      t.integer :menu_section_id
+      t.integer :menu_section_id, null: false
 
       t.timestamps
     end

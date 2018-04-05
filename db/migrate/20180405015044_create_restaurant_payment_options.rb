@@ -1,4 +1,4 @@
-class CreateRestaurantPaymentOptions < ActiveRecord::Migration[5.1]
+class CreateRestaurantPayment < ActiveRecord::Migration[5.1]
   def change
     create_table :restaurant_payment do |t|
       t.integer :payment_option_id, null: false

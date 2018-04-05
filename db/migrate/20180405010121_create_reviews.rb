@@ -1,10 +1,10 @@
 class CreateReviews < ActiveRecord::Migration[5.1]
   def change
     create_table :reviews do |t|
-      t.string :username
+      t.string :username, null: false
       t.string :body
-      t.integer :rating
-      t.integer :restaurant_id
+      t.integer :rating, null: false
+      t.integer :restaurant_id, null: false
 
       t.timestamps
     end
