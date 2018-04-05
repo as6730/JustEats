@@ -22,7 +22,9 @@ class Api::ReservationsController < ApplicationController
 
   def update
     @reservation = Reservation.find(params[:id])
-
+    @reservation.user_id = params[:user_id]
+    @reservation.restaurant_id = params[:restaurant_id]
+    
     if @reservation.update_attributes(reservation_params)
       render :show
     else
