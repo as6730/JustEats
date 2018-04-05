@@ -28,7 +28,7 @@ class Api::RestaurantsController < ApplicationController
   end
 
   def edit
-    render :edit
+    render :show
   end
 
   def show
@@ -38,7 +38,7 @@ class Api::RestaurantsController < ApplicationController
   def destroy
     restaurant = Restaurant.find(params[:id])
     restaurant.destroy!
-    render json: :show # should this be index?
+    render json: :show
   end
 
   private
