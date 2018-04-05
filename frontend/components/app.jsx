@@ -10,16 +10,19 @@ import SignupFormContainer from "./session_form/signup_form_container";
 // <Route exact path="/" component={GreetingContainer} />
 const App = () => (
   <div>
-    <header>
-      <Link to="/" className="header-link">
-        <h1>JustEat</h1>
-      </Link>
-      <GreetingContainer />
-    </header>
-    <Switch>
-      <AuthRoute exact path="/login" component={LoginFormContainer} />
-      <AuthRoute exact path="/signup" component={SignupFormContainer} />
-    </Switch>
+    <div className="nav-bar-container">
+      <nav className="nav-bar-main">
+        <Link to="/" className="header-link">
+          <i className="fas fa-dot-circle" />
+          <h1>JustEat</h1>
+        </Link>
+        <GreetingContainer />
+        <Switch>
+          <AuthRoute exact path="/login" component={LoginFormContainer} />
+          <AuthRoute exact path="/signup" component={SignupFormContainer} />
+        </Switch>
+      </nav>
+    </div>
   </div>
 );
 

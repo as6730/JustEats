@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  username: MyString
+  body: MyString
+  rating: 1
+  restaurant_id: 1
+
+two:
+  username: MyString
+  body: MyString
+  rating: 1
+  restaurant_id: 1

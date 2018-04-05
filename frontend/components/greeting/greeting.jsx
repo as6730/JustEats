@@ -4,18 +4,16 @@ import { Link } from "react-router-dom";
 class Greeting extends Component {
   constructor(props) {
     super(props);
-    this.currentUser = this.props.currentUser;
-    this.logout = this.props.logout;
   }
 
   render() {
-    const currentUser = this.currentUser;
+    const currentUser = this.props.currentUser;
     const logout = this.props.logout;
 
     if (currentUser) {
       return (
         <div>
-          <nav className="nav-greeting">Hi,{currentUser.firstname}</nav>
+          <div className="nav-greeting">Hi,{currentUser.firstname}</div>
           <button className="nav-logout" onClick={logout}>
             Sign out
           </button>
@@ -23,11 +21,11 @@ class Greeting extends Component {
       );
     } else {
       return (
-        <nav className="session-links">
+        <div className="session-links">
           <Link to="/signup">Sign up</Link>
           &nbsp;
           <Link to="/login">Sign in</Link>
-        </nav>
+        </div>
       );
     }
   }
