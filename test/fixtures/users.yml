@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :integer          not null, primary key
+#  username        :string           not null
+#  firstname       :string           not null
+#  lastname        :string           not null
+#  password_digest :string           not null
+#  session_token   :string           not null
+#  country_code    :string
+#  phone_number    :string
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  email           :string
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
