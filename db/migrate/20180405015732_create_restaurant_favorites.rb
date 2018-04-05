@@ -8,6 +8,6 @@ class CreateRestaurantFavorites < ActiveRecord::Migration[5.1]
     end
 
     add_index(:restaurant_favorites, [:user_id, :restaurant_id], unique: true)
-    add_index, :restaurant_favorites, :restaurant_id
+    add_index :restaurant_favorites, :restaurant_id
   end
 end
