@@ -36,7 +36,7 @@ class Restaurant < ApplicationRecord
     source: :payment_option
 
   has_many :cuisines,
-    through: :restaurant_cuisine,
+    through: :restaurant_cuisines,
     source: :cuisine
 
   has_many :favorites,
@@ -89,5 +89,4 @@ class Restaurant < ApplicationRecord
     class_name: :Location,
     foreign_key: :restaurant_id,
     primary_key: :id
-
 end
