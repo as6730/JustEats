@@ -13,6 +13,7 @@
 
 class Review < ApplicationRecord
   validates :username, :rating, presence: true
+  validates_inclusion_of :rating, :in => (0.0..5.0)
 
   belongs_to :restaurant,
     class_name: :Restaurant,
