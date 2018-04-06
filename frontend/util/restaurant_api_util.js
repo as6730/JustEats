@@ -12,20 +12,20 @@ export const fetchRestaurant = id =>
 
 export const createRestaurant = restaurant =>
   $.ajax({
-    url: "api/restaurants",
+    url: "/api/restaurants",
     method: "POST",
     data: { restaurant }
   });
 
 export const updateRestaurant = restaurant =>
   $.ajax({
-    url: `api/restaurants/${restaurant.id}`,
+    url: `/api/restaurants/${restaurant.id}`,
     method: "PATCH",
     data: { restaurant }
   });
 
-export const deletePost = id =>
+export const deleteRestaurant = id =>
   $.ajax({
-    url: `api/restaurants/${id}`,
+    url: `/api/restaurants/${id}`,
     method: "DELETE"
   });
