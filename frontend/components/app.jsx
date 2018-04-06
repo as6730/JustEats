@@ -6,7 +6,7 @@ import { AuthRoute } from "../util/route_util";
 import GreetingContainer from "./greeting/greeting_container";
 import LoginFormContainer from "./session_form/login_form_container";
 import SignupFormContainer from "./session_form/signup_form_container";
-import RestaurantContainer from "./restaurant/restaurant_container";
+import RestaurantShowContainer from "./restaurant/restaurant_show_container";
 
 // <Route exact path="/" component={GreetingContainer} />
 const App = () => (
@@ -19,7 +19,11 @@ const App = () => (
         </Link>
         <GreetingContainer />
         <Switch>
-          <Route exact path="/restaurant" component={RestaurantContainer} />
+          <Route
+            exact
+            path="/restaurants/:restaurantId"
+            component={RestaurantShowContainer}
+          />
           <AuthRoute exact path="/login" component={LoginFormContainer} />
           <AuthRoute exact path="/signup" component={SignupFormContainer} />
         </Switch>

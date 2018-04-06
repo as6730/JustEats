@@ -16,12 +16,12 @@ export const fetchRestaurant = id => dispatch =>
 
 export const createRestaurant = restaurant => dispatch =>
   PostApiUtil.createRestaurant(restaurant).then(restaurant =>
-    dispatch(receiveAllRestaurant(restaurant))
+    dispatch(receiveRestaurant(restaurant))
   );
 
 export const updateRestaurant = restaurant => dispatch =>
   PostApiUtil.updateRestaurant(restaurant).then(restaurant =>
-    dispatch(receiveAllRestaurant(restaurant))
+    dispatch(receiveRestaurant(restaurant))
   );
 
 export const deleteRestaurant = restaurantId => dispatch =>

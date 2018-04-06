@@ -5,7 +5,7 @@ class Api::RestaurantsController < ApplicationController
 
   def create
     # the post request body will be a json string of a restaurant object
-    req = JSON.parse(request.body.read)
+    # req = JSON.parse(request.body.read)
     @restaurant = Restaurant.new(JSON.parse(request.body.read))
 
     if @restaurant.save!
