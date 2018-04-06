@@ -2,7 +2,7 @@ class Api::ReviewsController < ApplicationController
   before_action :require_user_login!
 
   def index
-    @review = Review.all
+    @reviews = Review.where(restaurant_id: params[:restaurant_id])
   end
 
   def new
@@ -10,7 +10,8 @@ class Api::ReviewsController < ApplicationController
   end
 
   def create
-    @review = Review.new(review_params)
+    @review = Review.new(JSON.parse(request.body.read))
+    @review.username = current_user.username
     @review.restaurant_id = params[:restaurant_id]
 
     if @review.save!
@@ -23,7 +24,7 @@ class Api::ReviewsController < ApplicationController
   def update
     @review = Review.find(params[:id])
 
-    if @review.update_attributes(review_params)
+    if @review.update_attributes(JSON.parse(request.body.read))
       render :show
     else
       render json: @review.errors.full_messages, status: 404
@@ -41,12 +42,6 @@ class Api::ReviewsController < ApplicationController
   def destroy
     review = Review.find(params[:id])
     review.destroy!
-    render json: :show
-  end
-
-  private
-
-  def review_params
-    params.require(:review).permit(:username, :body, :rating)
+    render json: "{\"status\" : \"success\"}"
   end
 end

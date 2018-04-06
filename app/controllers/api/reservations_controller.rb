@@ -2,7 +2,7 @@ class Api::ReservationsController < ApplicationController
   before_action :require_user_login!
 
   def index
-    @reservation = Reservation.all
+    @reservations = Reservation.all
   end
 
   def new
@@ -10,8 +10,9 @@ class Api::ReservationsController < ApplicationController
   end
 
   def create
-    @reservation = Reservation.new(reservation_params)
+    @reservation = Reservation.new(JSON.parse(request.body.read))
     @reservation.user_id = current_user.id
+    @reservation.restaurant_id = params[:restaurant_id]
 
     if @reservation.save!
       render :show
@@ -21,11 +22,9 @@ class Api::ReservationsController < ApplicationController
   end
 
   def update
-    @reservation = Reservation.find(params[:id])
-    @reservation.user_id = params[:user_id]
-    @reservation.restaurant_id = params[:restaurant_id]
-    
-    if @reservation.update_attributes(reservation_params)
+    @reservation = current_user.reservations.find(params[:id])
+
+    if @reservation.update_attributes(JSON.parse(request.body.read))
       render :show
     else
       render json: @reservation.errors.full_messages, status: 404
@@ -43,7 +42,7 @@ class Api::ReservationsController < ApplicationController
   def destroy
     reservation = Reservation.find(params[:id])
     reservation.destroy!
-    render json: :show
+    render json: "{\"status\" : \"success\"}"
   end
 
   private

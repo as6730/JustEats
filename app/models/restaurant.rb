@@ -19,7 +19,7 @@
 #
 
 class Restaurant < ApplicationRecord
-  validates :name, :description, presence: true
+  validates :name, :description, presence: true, uniqueness: true
 
   has_many :restaurant_cuisines,
     class_name: :RestaurantCuisine,

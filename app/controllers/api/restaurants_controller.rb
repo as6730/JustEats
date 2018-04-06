@@ -1,14 +1,11 @@
 class Api::RestaurantsController < ApplicationController
   def index
-    @restaurant = Restaurant.all
-  end
-
-  def new
-    @restaurant = Restaurant.new
+    @restaurants = Restaurant.all
   end
 
   def create
-    @restaurant = Restaurant.new(restaurant_params)
+    # the post request body will be a json string of a restaurant object
+    @restaurant = Restaurant.new(JSON.parse(request.body.read))
 
     if @restaurant.save!
       render :show
@@ -27,10 +24,6 @@ class Api::RestaurantsController < ApplicationController
     end
   end
 
-  def edit
-    render :show
-  end
-
   def show
     # preload associated tables so that there aren't multiple queries
     @restaurant = Restaurant.includes(:reviews, :photos, :cuisines, :reservations, :payment_options, :favorites).find(params[:id])
@@ -39,7 +32,7 @@ class Api::RestaurantsController < ApplicationController
   def destroy
     restaurant = Restaurant.find(params[:id])
     restaurant.destroy!
-    render json: :show
+    render json: "{\"status\" : \"success\"}"
   end
 
   private
