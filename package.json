@@ -37,12 +37,5 @@
   "bugs": {
     "url": "https://github.com/as6730/JustEats/issues"
   },
-  "homepage": "https://github.com/as6730/JustEats#readme",
-  "engines": {
-    "node": "4.1.1",
-    "npm": "2.1.x"
-  },
-  "scripts": {
-    "postinstall": "webpack"
-  }
+  "homepage": "https://github.com/as6730/JustEats#readme"
 }
