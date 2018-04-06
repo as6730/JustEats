@@ -77,6 +77,14 @@ class Restaurant < ApplicationRecord
     foreign_key: :restaurant_id,
     primary_key: :id
 
+  has_many :menu_sections,
+    through: :menu,
+    source: :menu_sections
+
+  has_many :dishes,
+    through: :menu_sections,
+    source: :dishes
+
   has_one :location,
     class_name: :Location,
     foreign_key: :restaurant_id,
