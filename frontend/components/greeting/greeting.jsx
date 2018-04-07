@@ -25,7 +25,7 @@ class Greeting extends Component {
           <Link to="/signup">
             <button className="btn-signup">Sign up</button>
           </Link>
-          <Link to="/signin">
+          <Link to="/signup">
             <button className="btn-signin">Sign in</button>
           </Link>
         </div>

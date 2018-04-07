@@ -14,7 +14,7 @@ class Api::ReviewsController < ApplicationController
     @review.username = current_user.username
     @review.restaurant_id = params[:restaurant_id]
 
-    if @review.save!
+    if @review.save
       render :show
     else
       render json: @review.errors.full_messages, status: 422

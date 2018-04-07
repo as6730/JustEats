@@ -8,7 +8,7 @@ class Api::RestaurantsController < ApplicationController
     # req = JSON.parse(request.body.read)
     @restaurant = Restaurant.new(JSON.parse(request.body.read))
 
-    if @restaurant.save!
+    if @restaurant.save
       render :show
     else
       render json: @restaurant.errors.full_messages, status: 422
