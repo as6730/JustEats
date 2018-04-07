@@ -1,0 +1,83 @@
+.restaurant-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: $lato;
+}
+
+.banner-image-container {
+  display: flex;
+  overflow: hidden;
+  height: 306px;
+}
+
+.banner-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.restaurant-info-container {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  width: 1000px;
+  height: 1000px;
+  margin-top: -48px;
+}
+
+.restaurant-details {
+  width: 640px;
+  height: 100%;
+}
+
+.restaurant-details-header {
+  height: 48px;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.restaurant-details-header > ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.restaurant-details-header > ul > li {
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 16px;
+  text-decoration: none;
+  float: left;
+  font-size: 12px;
+}
+
+.restaurant-details-header > ul > li:hover {
+  border-bottom: 1px solid red;
+  cursor: pointer;
+}
+
+.restaurant-name {
+  font-size: 40px;
+  margin: 10px;
+}
+
+.restaurant-description {
+  font-size: 13px;
+  margin: 10px;
+}
+
+.restaurant-reservation {
+  width: 320px;
+  height: 930px;
+  border-radius: 5px;
+  background-color: white;
+  text-align: center;
+}
+
+.restaurant-reservation-header {
+  margin: 10px;
+  font-size: 20px;
+}
