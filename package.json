@@ -9,6 +9,7 @@
     "lodash": "^4.17.5",
     "react": "^16.3.0",
     "react-dom": "^16.3.0",
+    "react-icons": "^2.2.7",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
     "redux": "^3.7.2",
@@ -16,8 +17,7 @@
     "redux-thunk": "^2.2.0",
     "webpack": "^3.10.0"
   },
-  "description":
-    "This README would normally document whatever steps are necessary to get the application up and running.",
+  "description": "This README would normally document whatever steps are necessary to get the application up and running.",
   "version": "1.0.0",
   "main": "index.js",
   "directories": {

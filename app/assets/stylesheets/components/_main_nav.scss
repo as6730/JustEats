@@ -5,26 +5,55 @@
   border-bottom: 1px solid $dark-blue;
 }
 
-.left-nav {
+.left-nav,
+.right-nav {
   display: flex;
   align-items: center;
 }
 
-.left-nav-signup {
-  margin-left: 20px;
-  cursor: pointer;
-  text-transform: uppercase;
-  font-family: $sans-serif;
-  font-weight: bold;
-  font-size: 11px;
+.right-nav {
+  margin-left: 15px;
+  position: relative;
   padding: 7px 9px;
-  transition: background-color 0.3s;
 }
 
-.left-nav-signup:hover {
+.left-nav {
+  padding: 10px;
+  margin-left: 20px;
+  cursor: pointer;
+  font-family: $lato;
+  font-size: 15px;
+}
+
+.btn-signup {
+  padding: 7px 9px;
+  transition: background-color 0.3s;
+  background-color: $dark-blue;
+  border: 1px solid $darkest-blue;
+  color: #fff;
+}
+
+.btn-signup:hover {
   background-color: $darkest-blue;
 }
 
-.left-nav-signup span {
+.btn-signup,
+.btn-signin {
   margin-left: 10px;
+  margin-right: 10px;
+}
+
+.logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 156px;
+  height: 54px;
+}
+
+.logo-text {
+  font-size: 20px;
+  font-family: $lato;
+  padding-left: 5px;
 }

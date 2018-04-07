@@ -13,10 +13,6 @@ const App = () => (
   <div>
     <div className="nav-bar-container">
       <nav className="nav-bar-main">
-        <Link to="/" className="header-link">
-          <i className="fas fa-dot-circle" />
-          <h1>JustEat</h1>
-        </Link>
         <GreetingContainer />
         <Switch>
           <Route
