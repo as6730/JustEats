@@ -21,10 +21,14 @@ class Greeting extends Component {
       );
     } else {
       return (
-        <div className="session-links">
-          <Link to="/signup">Sign up</Link>
+        <div className="left-nav">
+          <Link to="/signup">
+            <button className="left-nav-signup">Sign up</button>
+          </Link>
           &nbsp;
-          <Link to="/login">Sign in</Link>
+          <Link to="/login">
+            <button>Sign in</button>
+          </Link>
         </div>
       );
     }

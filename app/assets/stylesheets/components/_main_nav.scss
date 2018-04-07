@@ -1,0 +1,30 @@
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid $dark-blue;
+}
+
+.left-nav {
+  display: flex;
+  align-items: center;
+}
+
+.left-nav-signup {
+  margin-left: 20px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-family: $sans-serif;
+  font-weight: bold;
+  font-size: 11px;
+  padding: 7px 9px;
+  transition: background-color 0.3s;
+}
+
+.left-nav-signup:hover {
+  background-color: $darkest-blue;
+}
+
+.left-nav-signup span {
+  margin-left: 10px;
+}
