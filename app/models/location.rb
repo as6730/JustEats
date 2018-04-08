@@ -10,13 +10,15 @@
 #  cross_street       :string
 #  parking_details    :string
 #  location_image_url :string
-#  restaurant_id      :integer
+#  restaurant_id      :integer          not null
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
+#  country            :string           not null
+#  city               :string           not null
 #
 
 class Location < ApplicationRecord
-  validates :latitude, :longitude, presence: true
+  validates :latitude, :longitude, :country, :city, presence: true
 
   belongs_to :restaurant
 end

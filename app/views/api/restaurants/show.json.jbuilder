@@ -14,7 +14,9 @@ json.restaurant do
   # associations with no foreign key / has_one association
   json.location @restaurant.location
   # json.cuisines @restaurant.cuisines
-  json.partial! 'api/menus/menu', menu: @restaurant.menu
+  unless @restaurant.menu.nil?
+    json.partial! 'api/menus/menu', menu: @restaurant.menu
+  end
 
   # how do you pull has many through assocations?
   # json.menu_sections @restaurant.menu_sections

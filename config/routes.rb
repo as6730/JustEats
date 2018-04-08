@@ -20,11 +20,7 @@ Rails.application.routes.draw do
       resources :reviews, only: [:index, :create]
       resources :tags, only: [:create]
       resources :photos, only: [:create]
-      resources :menus, only: [:create] do
-        resources :menu_sections, only: [:create] do
-          resources :dishes, only: [:create]
-        end
-      end
+      resources :menus, only: [:create] 
       resources :locations, only: [:create]
       resources :cuisines, only: [:create]
       resources :payment_options, only: [:create]

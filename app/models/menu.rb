@@ -8,6 +8,7 @@
 #  restaurant_id :integer          not null
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  link          :string
 #
 
 class Menu < ApplicationRecord
@@ -15,5 +16,4 @@ class Menu < ApplicationRecord
 
   belongs_to :restaurant
   has_many :menu_sections
-  has_many :dishes, through: :menu_sections
 end

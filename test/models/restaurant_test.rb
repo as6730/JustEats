@@ -4,7 +4,7 @@
 #
 #  id                       :integer          not null, primary key
 #  name                     :string           not null
-#  description              :string           not null
+#  description              :text             not null
 #  phone_number             :string
 #  website_link             :string
 #  hours                    :string
@@ -16,6 +16,7 @@
 #  private_party_contact    :string
 #  created_at               :datetime         not null
 #  updated_at               :datetime         not null
+#  background_image         :string
 #
 
 require 'test_helper'

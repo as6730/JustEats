@@ -4,7 +4,7 @@
 #
 #  id                       :integer          not null, primary key
 #  name                     :string           not null
-#  description              :string           not null
+#  description              :text             not null
 #  phone_number             :string
 #  website_link             :string
 #  hours                    :string
@@ -16,6 +16,7 @@
 #  private_party_contact    :string
 #  created_at               :datetime         not null
 #  updated_at               :datetime         not null
+#  background_image         :string
 #
 
 class Restaurant < ApplicationRecord
@@ -51,7 +52,5 @@ class Restaurant < ApplicationRecord
   has_many :photos
 
   has_one :menu
-  has_many :menu_sections, through: :menu
-  has_many :dishes, through: :menu_sections
   has_one :location
 end

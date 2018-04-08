@@ -5,6 +5,7 @@ class Api::CuisinesController < ApplicationController
 
   def create
     @request = JSON.parse(request.body.read)
+    # if we can find the cuisine name, we don't recreate it
     @cuisine = Cuisine.where(:name => @request["name"])[0]
 
     if @cuisine.nil?

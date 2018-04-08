@@ -12,7 +12,7 @@ class Api::PaymentOptionsController < ApplicationController
       @payment_option.save!
     end
 
-    @restaurant_payment_option = RestaurantPayment.new(payment_option_id: @payment_option.id, restaurant_id: params[:restaurant_id])
+    @restaurant_payment_option = RestaurantPayment.new(payment_id: @payment_option.id, restaurant_id: params[:restaurant_id])
     if @restaurant_payment_option.save
       render :show
     else

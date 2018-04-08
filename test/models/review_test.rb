@@ -3,12 +3,13 @@
 # Table name: reviews
 #
 #  id            :integer          not null, primary key
-#  username      :string
+#  username      :string           not null
 #  body          :string
-#  rating        :integer
-#  restaurant_id :integer
+#  rating        :integer          not null
+#  restaurant_id :integer          not null
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  date_created  :string
 #
 
 require 'test_helper'

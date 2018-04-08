@@ -2,13 +2,13 @@
 #
 # Table name: dishes
 #
-#  id              :integer          not null, primary key
-#  name            :string           not null
-#  price           :string           not null
-#  description     :string
-#  menu_section_id :integer
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
+#  id                   :integer          not null, primary key
+#  name                 :string           not null
+#  price                :string           not null
+#  description          :string
+#  mini_menu_section_id :integer          not null
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

@@ -1,9 +1,19 @@
 require 'nokogiri'
 require 'open-uri'
+require 'json'
 
-links = ["https://www.opentable.com/r/seven-hills-san-francisco?page=1", "https://www.opentable.com/r/the-stinking-rose-san-francisco?page=1", "https://www.opentable.com/blue-hill?page=1", "https://www.opentable.com/harold-black?page=1", "https://www.opentable.com/seasons-restaurant-four-seasons-washington-dc?page=1", "https://www.opentable.com/r/tarbells-phoenix?page=1"]
+# links = ["https://www.opentable.com/r/seven-hills-san-francisco?page=1", "https://www.opentable.com/r/the-stinking-rose-san-francisco?page=1", "https://www.opentable.com/blue-hill?page=1", "https://www.opentable.com/harold-black?page=1", "https://www.opentable.com/seasons-restaurant-four-seasons-washington-dc?page=1", "https://www.opentable.com/r/tarbells-phoenix?page=1"]
+allRestaurants = Nokogiri::HTML(open("https://www.opentable.com/san-francisco-bay-area-restaurant-listings"))
+
+links = []
+
+allRestaurants.xpath('//a[starts-with(@class, "rest-row-name rest-name ")]').each do |el|
+  links << "https://www.opentable.com" + el.attr("href")
+end
 
 links.each do |link|
+  p "Scraping link: " + link
+
   doc = Nokogiri::HTML(open(link))
   restaurant = {};
   restaurant_cuisines = [];
@@ -13,7 +23,7 @@ links.each do |link|
   restaurant_photos = [];
   restaurant_reviews = [];
   restaurant_menu = {};
-  restaurant_menu_sections = []
+  restaurant_menu_sections_names = []
 
 
   p '-------------------------------------------------------------'
@@ -30,13 +40,14 @@ links.each do |link|
 
   doc.xpath('//div[starts-with(@class, "_36c26dd6")]').each do |el|
     el.xpath('.//button[starts-with(@class, "menu-link")]').each do |menu_section|
-      restaurant_menu_sections << menu_section.text
+      restaurant_menu_sections_names << menu_section.text
     end
   end
 
-  (1..restaurant_menu_sections.length+1).each do |idx|
+  restaurant_menu["menu_sections"] = []
+  (1..restaurant_menu_sections_names.length+1).each do |idx|
     curr_section = {}
-    curr_section["title"] = restaurant_menu_sections[idx]
+    curr_section["title"] = restaurant_menu_sections_names[idx]
     curr_section["mini_sections"] = []
     doc.xpath("//div[starts-with(@id, \"menu-#{idx}\")]").each do |el|
       el.xpath('.//div[starts-with(@class, "menuSection _71cb1f26")]').each do |menu_section|
@@ -61,19 +72,17 @@ links.each do |link|
       end
     end
 
-    restaurant_menu_sections << curr_section
+    restaurant_menu["menu_sections"] << curr_section
   end
-
-  #
-  # el.xpath('.//div[starts-with(@class, "menu-item-title")]').each do |title|
-  #   title = title.text
-  #   p title
-  # end
-
-  # restaurant_menu["menu_section"] = curr_menu_section
 
   doc.xpath('//div[starts-with(@itemprop, "description")]').each do |el|
     restaurant["description"] = el.children[0].text
+  end
+
+  doc.xpath('//div[starts-with(@class, "_37c5e15e")]').each do |el|
+    bgurl = el.attr("style")
+    bgurl = bgurl[bgurl.index("maps")..-3]
+    restaurant_location["location_image_url"] = bgurl
   end
 
   doc.xpath('//div[starts-with(@class, "_104e8c71 _335ca853")]').each do |el|
@@ -90,6 +99,10 @@ links.each do |link|
     restaurant_tags << el.children[0].text
   end
 
+  doc.xpath('//div[starts-with(@class, "menu-updated b5b6c062")]').each do |el|
+    restaurant_menu["last_update"] = el.text
+  end
+
   doc.xpath('//div[starts-with(@itemprop, "review")]').each do |el|
     currReview = {}
     el.children.each do |child|
@@ -100,7 +113,7 @@ links.each do |link|
         end
         child.xpath('.//div[starts-with(@class, "_491257d8")]').each do |rating|
           currReview["rating"] = rating.children[0].text.to_i
-          currReview["review_date"] = rating.children[1].text
+          currReview["date_created"] = rating.children[1].text
         end
       when "reviewBodyContainer _73484bf6"
         child.xpath('.//p[starts-with(@id, "review-body-original")]').each do |body|
@@ -153,10 +166,167 @@ links.each do |link|
     end
   end
 
+  # Creates a restaurant
+  uri = URI.parse("http://localhost/api/restaurants")
+  http = Net::HTTP.new(uri.host, 3000)
+  # http.set_debug_output($stdout)
+  # http.use_ssl = true
+  # http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+  request = Net::HTTP::Post.new(uri.request_uri)
+  request.add_field('Content-Type', 'application/json')
+  request.body = restaurant.to_json
+  response = http.request(request)
+  unless response.kind_of? Net::HTTPSuccess
+    p "failed"
+    next
+  end
+  responseObj = JSON.parse(response.body)
+  restaurant_id = responseObj["restaurant"]["id"].to_s
+  p 'Restaurant was created: id=' + restaurant_id
+
+  # Creates a restaurant's menu
+  uri = URI.parse("http://localhost/api/restaurants/#{restaurant_id}/menus")
+  http = Net::HTTP.new(uri.host, 3000)
+  # http.set_debug_output($stdout)
+  # http.use_ssl = true
+  # http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+  request = Net::HTTP::Post.new(uri.request_uri)
+  request.add_field('Content-Type', 'application/json')
+  request.body = restaurant_menu.to_json
+  response = http.request(request)
+  unless response.kind_of? Net::HTTPSuccess
+    p "failed"
+    next
+  end
+  responseObj = JSON.parse(response.body)
+
+  # Creates cuisines
+  restaurant_cuisines.each do |cuisine|
+    uri = URI.parse("http://localhost/api/restaurants/#{restaurant_id}/cuisines")
+    http = Net::HTTP.new(uri.host, 3000)
+    # http.set_debug_output($stdout)
+    # http.use_ssl = true
+    # http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+    request = Net::HTTP::Post.new(uri.request_uri)
+    request.add_field('Content-Type', 'application/json')
+    requestCuisine = {}
+    requestCuisine["name"] = cuisine
+    request.body = requestCuisine.to_json
+    response = http.request(request)
+    unless response.kind_of? Net::HTTPSuccess
+      p "failed"
+      next
+    end
+    responseObj = JSON.parse(response.body)
+  end
+
+  # Creates payment options
+  restaurant_payment_options.each do |payment_option|
+    uri = URI.parse("http://localhost/api/restaurants/#{restaurant_id}/payment_options")
+    http = Net::HTTP.new(uri.host, 3000)
+    # http.set_debug_output($stdout)
+    # http.use_ssl = true
+    # http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+    request = Net::HTTP::Post.new(uri.request_uri)
+    request.add_field('Content-Type', 'application/json')
+    requestPaymentOption = {}
+    requestPaymentOption["name"] = payment_option
+    request.body = requestPaymentOption.to_json
+    response = http.request(request)
+    unless response.kind_of? Net::HTTPSuccess
+      p "failed"
+      next
+    end
+    responseObj = JSON.parse(response.body)
+  end
+
+
+  # Creates locations
+  uri = URI.parse("http://localhost/api/restaurants/#{restaurant_id}/locations")
+  http = Net::HTTP.new(uri.host, 3000)
+  # http.set_debug_output($stdout)
+  # http.use_ssl = true
+  # http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+  request = Net::HTTP::Post.new(uri.request_uri)
+  request.add_field('Content-Type', 'application/json')
+  restaurant_location["latitude"] = 0.0
+  restaurant_location["longitude"] = 0.0
+  restaurant_location["country"] = "Placeholder"
+  restaurant_location["city"] = "Placeholder"
+  request.body = restaurant_location.to_json
+  response = http.request(request)
+  unless response.kind_of? Net::HTTPSuccess
+    p "failed"
+    next
+  end
+  responseObj = JSON.parse(response.body)
+
+  # Creates photos
+  restaurant_photos.each do |photo|
+    uri = URI.parse("http://localhost/api/restaurants/#{restaurant_id}/photos")
+    http = Net::HTTP.new(uri.host, 3000)
+    # http.set_debug_output($stdout)
+    # http.use_ssl = true
+    # http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+    request = Net::HTTP::Post.new(uri.request_uri)
+    request.add_field('Content-Type', 'application/json')
+    requestPhoto = {}
+    requestPhoto["url"] = photo
+    request.body = requestPhoto.to_json
+    response = http.request(request)
+    unless response.kind_of? Net::HTTPSuccess
+      p "failed"
+      next
+    end
+    responseObj = JSON.parse(response.body)
+  end
+
+  # Creates tags
+  restaurant_tags.each do |tag|
+    uri = URI.parse("http://localhost/api/restaurants/#{restaurant_id}/tags")
+    http = Net::HTTP.new(uri.host, 3000)
+    # http.set_debug_output($stdout)
+    # http.use_ssl = true
+    # http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+    request = Net::HTTP::Post.new(uri.request_uri)
+    request.add_field('Content-Type', 'application/json')
+    requestTag = {}
+    requestTag["name"] = tag
+    request.body = requestTag.to_json
+    response = http.request(request)
+    unless response.kind_of? Net::HTTPSuccess
+      p "failed"
+      next
+    end
+    responseObj = JSON.parse(response.body)
+  end
+
+  # Creates reviews
+  restaurant_reviews.each do |review|
+    uri = URI.parse("http://localhost/api/restaurants/#{restaurant_id}/reviews")
+    http = Net::HTTP.new(uri.host, 3000)
+    # http.set_debug_output($stdout)
+    # http.use_ssl = true
+    # http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+    request = Net::HTTP::Post.new(uri.request_uri)
+    request.add_field('Content-Type', 'application/json')
+    request.body = review.to_json
+    response = http.request(request)
+    unless response.kind_of? Net::HTTPSuccess
+      p "failed"
+      next
+    end
+    responseObj = JSON.parse(response.body)
+  end
+
   # p restaurant_menu_sections
   # p restaurant
   # p restaurant_cuisines
   # p restaurant_location
   # p restaurant_tags
   # p restaurant_photos
+
+  # p JSON.generate restaurant_menu
+  # p JSON.generate restaurant
+
 end
