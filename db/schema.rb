@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180405185305) do
+ActiveRecord::Schema.define(version: 20180408200333) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,10 +26,10 @@ ActiveRecord::Schema.define(version: 20180405185305) do
     t.string "name", null: false
     t.string "price", null: false
     t.string "description"
-    t.integer "menu_section_id"
+    t.integer "mini_menu_section_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["menu_section_id"], name: "index_dishes_on_menu_section_id"
+    t.index ["mini_menu_section_id"], name: "index_dishes_on_mini_menu_section_id"
   end
 
   create_table "locations", force: :cascade do |t|
@@ -40,14 +40,16 @@ ActiveRecord::Schema.define(version: 20180405185305) do
     t.string "cross_street"
     t.string "parking_details"
     t.string "location_image_url"
-    t.integer "restaurant_id"
+    t.integer "restaurant_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "country", null: false
+    t.string "city", null: false
     t.index ["restaurant_id"], name: "index_locations_on_restaurant_id"
   end
 
   create_table "menu_sections", force: :cascade do |t|
-    t.string "title"
+    t.string "title", null: false
     t.string "description"
     t.integer "menu_id", null: false
     t.datetime "created_at", null: false
@@ -61,7 +63,15 @@ ActiveRecord::Schema.define(version: 20180405185305) do
     t.integer "restaurant_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "link"
     t.index ["restaurant_id"], name: "index_menus_on_restaurant_id"
+  end
+
+  create_table "mini_menu_sections", force: :cascade do |t|
+    t.string "title", null: false
+    t.string "description"
+    t.integer "menu_section_id", null: false
+    t.index ["menu_section_id"], name: "index_mini_menu_sections_on_menu_section_id"
   end
 
   create_table "payment_options", force: :cascade do |t|
@@ -109,15 +119,6 @@ ActiveRecord::Schema.define(version: 20180405185305) do
     t.index ["user_id", "restaurant_id"], name: "index_restaurant_favorites_on_user_id_and_restaurant_id", unique: true
   end
 
-  create_table "restaurant_payment", force: :cascade do |t|
-    t.integer "payment_option_id", null: false
-    t.integer "restaurant_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["payment_option_id", "restaurant_id"], name: "index_restaurant_payment_on_payment_option_id_and_restaurant_id", unique: true
-    t.index ["restaurant_id"], name: "index_restaurant_payment_on_restaurant_id"
-  end
-
   create_table "restaurant_payments", force: :cascade do |t|
     t.integer "payment_id", null: false
     t.integer "restaurant_id", null: false
@@ -138,7 +139,7 @@ ActiveRecord::Schema.define(version: 20180405185305) do
 
   create_table "restaurants", force: :cascade do |t|
     t.string "name", null: false
-    t.string "description", null: false
+    t.text "description", null: false
     t.string "phone_number"
     t.string "website_link"
     t.string "hours"
@@ -150,15 +151,17 @@ ActiveRecord::Schema.define(version: 20180405185305) do
     t.string "private_party_contact"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "background_image"
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.string "username"
+    t.string "username", null: false
     t.string "body"
-    t.integer "rating"
-    t.integer "restaurant_id"
+    t.integer "rating", null: false
+    t.integer "restaurant_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "date_created"
     t.index ["restaurant_id"], name: "index_reviews_on_restaurant_id"
   end
 
