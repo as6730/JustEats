@@ -8,80 +8,72 @@ json.restaurant do
   # json.reservation_ids @restaurant.reservations.pluck(:id)
   # json.photo_ids @restaurant.photos.pluck(:id)
   # json.favorite_ids @restaurant.favorites.pluck(:id)
+  # json.tag_ids @restaurant.tags
   # json.payment_option_ids @restaurant.payment_options.pluck(:id)
 
   # associations with no foreign key / has_one association
   json.location @restaurant.location
-  json.cuisines @restaurant.cuisines
+  # json.cuisines @restaurant.cuisines
   json.menu @restaurant.menu
 
   # how do you pull has many through assocations?
-  json.menu_sections @restaurant.menu_sections
-  json.dishes @restaurant.dishes
-end
+  # json.menu_sections @restaurant.menu_sections
+  # json.dishes @restaurant.dishes
 
-json.reviews do
-  @restaurant.reviews.each do |review|
-    json.set! review.id do
-      json.partial! 'api/reviews/review', review: review
+  # load any extras into controller for faster querying
+  json.reviews do
+    @restaurant.reviews.each do |review|
+      json.set! review.id do
+        json.partial! 'api/reviews/review', review: review
+      end
     end
   end
-end
 
-json.reservations do
-  @restaurant.reservations.each do |reservation|
-    json.set! reservation.id do
-      json.partial! 'api/reservations/reservation', reservation: reservation
+  json.reservations do
+    @restaurant.reservations.each do |reservation|
+      json.set! reservation.id do
+        json.partial! 'api/reservations/reservation', reservation: reservation
+      end
     end
   end
-end
 
-json.photos do
-  @restaurant.photos.each do |photo|
-    json.set! photo.id do
-      json.partial! 'api/photos/photo', photo: photo
+  json.photos do
+    @restaurant.photos.each do |photo|
+      json.set! photo.id do
+        json.partial! 'api/photos/photo', photo: photo
+      end
     end
   end
-end
 
-json.cuisines do
-  @restaurant.cuisines.each do |cuisine|
-    json.set! cuisine.id do
-      json.partial! 'api/cuisines/cuisine', cuisine: cuisine
+  json.cuisines do
+    @restaurant.cuisines.each do |cuisine|
+      json.set! cuisine.id do
+        json.partial! 'api/cuisines/cuisine', cuisine: cuisine
+      end
     end
   end
-end
 
-json.payment_options do
-  @restaurant.payment_options.each do |payment_option|
-    json.set! payment_option.id do
-      json.partial! 'api/payment_options/payment_option', payment_option: payment_option
+  json.payment_options do
+    @restaurant.payment_options.each do |payment_option|
+      json.set! payment_option.id do
+        json.partial! 'api/payment_options/payment_option', payment_option: payment_option
+      end
     end
   end
-end
 
-json.favorites do
-  @restaurant.favorites.each do |favorite|
-    json.set! favorite.id do
-      json.partial! 'api/favorites/favorite', favorite: favorite
+  json.tags do
+    @restaurant.tags.each do |tag|
+      json.set! tag.id do
+        json.partial! 'api/tags/tag', tag: tag
+      end
     end
   end
-end
 
-# load any extras into controller for faster querying
-
-json.menu_sections do
-  @restaurant.menu_sections.each do |menu_section|
-    json.set! menu_section.id do
-      json.partial! 'api/menu_sections/menu_section', menu_section: menu_section
-    end
-  end
-end
-
-json.dishes do
-  @restaurant.dishes.each do |dish|
-    json.set! dish.id do
-      json.partial! 'api/dishs/dish', dish: dish
+  json.favorites do
+    @restaurant.favorites.each do |favorite|
+      json.set! favorite.id do
+        json.partial! 'api/favorites/favorite', favorite: favorite
+      end
     end
   end
 end

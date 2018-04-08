@@ -4,9 +4,16 @@ class Api::TagsController < ApplicationController
   end
 
   def create
-    @tag = Tag.new(JSON.parse(request.body.read))
+    @request = JSON.parse(request.body.read)
+    @tag = Tag.where(:name => @request["name"])[0]
+    
+    if @tag.nil?
+      @tag = Tag.new(@request)
+      @tag.save!
+    end
 
-    if @tag.save
+    @restaurant_tag = RestaurantTag.new(tag_id: @tag.id, restaurant_id: params[:restaurant_id])
+    if @restaurant_tag.save
       render :show
     else
       render json: @tag.errors.full_messages, status: 422

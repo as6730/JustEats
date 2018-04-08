@@ -22,19 +22,9 @@ class User < ApplicationRecord
   validates :session_token, presence: true, uniqueness: true
   after_initialize :ensure_session_token
 
-  has_many :reservations,
-    class_name: :Reservation,
-    foreign_key: :user_id,
-    primary_key: :id
-
-  has_many :favorites,
-    class_name: :RestaurantFavorite,
-    foreign_key: :user_id,
-    primary_key: :id
-
-  has_many :restaurants,
-    through: :favorites,
-    source: :restaurant
+  has_many :reservations
+  has_many :favorites
+  has_many :restaurants, through: :favorites
 
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)

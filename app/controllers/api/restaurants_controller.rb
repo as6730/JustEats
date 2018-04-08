@@ -27,7 +27,7 @@ class Api::RestaurantsController < ApplicationController
 
   def show
     # preload associated tables so that there aren't multiple queries
-    @restaurant = Restaurant.includes(:reviews, :photos, :cuisines, :reservations, :payment_options, :favorites).find(params[:id])
+    @restaurant = Restaurant.includes(:reviews, :photos, :cuisines, :reservations, :payment_options, :favorites, :tags).find(params[:id])
   end
 
   def destroy

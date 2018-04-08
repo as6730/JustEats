@@ -5,7 +5,8 @@ class Api::LocationsController < ApplicationController
 
   def create
     @location = Location.new(JSON.parse(request.body.read))
-
+    @location.restaurant_id = params[:restaurant_id]
+    
     if @location.save
       render :show
     else

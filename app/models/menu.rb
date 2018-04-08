@@ -13,17 +13,7 @@
 class Menu < ApplicationRecord
   validates :name, :last_update, presence: true
 
-  belongs_to :restaurant,
-    class_name: :Restaurant,
-    foreign_key: :restaurant_id,
-    primary_key: :id
-
-  has_many :menu_sections,
-    class_name: :MenuSection,
-    foreign_key: :menu_id,
-    primary_key: :id
-
-  has_many :dishes,
-    through: :menu_sections,
-    source: :dishes
+  belongs_to :restaurant
+  has_many :menu_sections
+  has_many :dishes, through: :menu_sections
 end

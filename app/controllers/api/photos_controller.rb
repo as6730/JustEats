@@ -5,6 +5,7 @@ class Api::PhotosController < ApplicationController
 
   def create
     @photo = Photo.new(JSON.parse(request.body.read))
+    @photo.restaurant_id = params[:restaurant_id]
 
     if @photo.save
       render :show

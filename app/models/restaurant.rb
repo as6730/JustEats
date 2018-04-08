@@ -21,10 +21,11 @@
 class Restaurant < ApplicationRecord
   validates :name, :description, presence: true, uniqueness: true
 
-  has_many :restaurant_cuisines,
-    class_name: :RestaurantCuisine,
-    foreign_key: :restaurant_id,
-    primary_key: :id
+  has_many :restaurant_tags
+  has_many :tags, through: :restaurant_tags
+
+  has_many :restaurant_cuisines
+  has_many :cuisines, through: :restaurant_cuisines
 
   has_many :restaurant_payments,
     class_name: :RestaurantPayment,
@@ -35,58 +36,22 @@ class Restaurant < ApplicationRecord
     through: :restaurant_payments,
     source: :payment_option
 
-  has_many :cuisines,
-    through: :restaurant_cuisines,
-    source: :cuisine
-
   has_many :favorites,
     class_name: :RestaurantFavorite,
     foreign_key: :restaurant_id,
     primary_key: :id
 
-  has_many :reservations,
-    class_name: :Reservation,
-    foreign_key: :restaurant_id,
-    primary_key: :id
+  has_many :reservations
 
   has_many :users,
     through: :favorites,
     source: :user
 
-  has_many :restaurant_tags,
-    class_name: :RestaurantTag,
-    foreign_key: :restaurant_id,
-    primary_key: :id
+  has_many :reviews
+  has_many :photos
 
-  has_many :tags,
-    through: :restaurant_tags,
-    source: :tag
-
-  has_many :reviews,
-    class_name: :Review,
-    foreign_key: :restaurant_id,
-    primary_key: :id
-
-  has_many :photos,
-    class_name: :Photo,
-    foreign_key: :restaurant_id,
-    primary_key: :id
-
-  has_one :menu,
-    class_name: :Menu,
-    foreign_key: :restaurant_id,
-    primary_key: :id
-
-  has_many :menu_sections,
-    through: :menu,
-    source: :menu_sections
-
-  has_many :dishes,
-    through: :menu_sections,
-    source: :dishes
-
-  has_one :location,
-    class_name: :Location,
-    foreign_key: :restaurant_id,
-    primary_key: :id
+  has_one :menu
+  has_many :menu_sections, through: :menu
+  has_many :dishes, through: :menu_sections
+  has_one :location
 end

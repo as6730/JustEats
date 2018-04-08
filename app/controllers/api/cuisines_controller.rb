@@ -4,9 +4,16 @@ class Api::CuisinesController < ApplicationController
   end
 
   def create
-    @cuisine = Cuisine.new(JSON.parse(request.body.read))
+    @request = JSON.parse(request.body.read)
+    @cuisine = Cuisine.where(:name => @request["name"])[0]
 
-    if @cuisine.save
+    if @cuisine.nil?
+      @cuisine = Cuisine.new(@request)
+      @cuisine.save!
+    end
+
+    @restaurant_cuisine = RestaurantCuisine.new(cuisine_id: @cuisine.id, restaurant_id: params[:restaurant_id])
+    if @restaurant_cuisine.save
       render :show
     else
       render json: @cuisine.errors.full_messages, status: 422

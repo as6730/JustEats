@@ -5,6 +5,7 @@ class Api::MenusController < ApplicationController
 
   def create
     @menu = Menu.new(JSON.parse(request.body.read))
+    @menu.restaurant_id = params[:restaurant_id]
 
     if @menu.save
       render :show

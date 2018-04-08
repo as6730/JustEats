@@ -16,7 +16,5 @@ class PaymentOption < ApplicationRecord
     foreign_key: :payment_id,
     primary_key: :id
 
-  has_many :restaurants,
-    through: :restaurant_payments,
-    source: :restaurant
+  has_many :restaurants, through: :restaurant_payments
 end

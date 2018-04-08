@@ -4,9 +4,16 @@ class Api::PaymentOptionsController < ApplicationController
   end
 
   def create
-    @payment_option = PaymentOption.new(JSON.parse(request.body.read))
+    @request = JSON.parse(request.body.read)
+    @payment_option = PaymentOption.where(:name => @request["name"])[0]
 
-    if @payment_option.save
+    if @payment_option.nil?
+      @payment_option = PaymentOption.new(@request)
+      @payment_option.save!
+    end
+
+    @restaurant_payment_option = RestaurantPayment.new(payment_option_id: @payment_option.id, restaurant_id: params[:restaurant_id])
+    if @restaurant_payment_option.save
       render :show
     else
       render json: @payment_option.errors.full_messages, status: 422
