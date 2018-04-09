@@ -1,4 +1,4 @@
-json.extract! menu, :id, :name
+json.extract! menu, :id, :last_update
 
 json.menu menu
 json.menu_sections menu.menu_sections do |menu_section|

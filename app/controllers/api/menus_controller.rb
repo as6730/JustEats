@@ -1,5 +1,3 @@
-require 'securerandom'
-
 class Api::MenusController < ApplicationController
   def index
     @menus = Menu.all
@@ -9,7 +7,6 @@ class Api::MenusController < ApplicationController
     menuObj = JSON.parse(request.body.read)
 
     @menu = Menu.new()
-    @menu.name ||= SecureRandom.uuid
     @menu.last_update = menuObj["last_update"].presence || "Placeholder"
     @menu.restaurant_id = params[:restaurant_id]
     @menu.save!
@@ -62,6 +59,6 @@ class Api::MenusController < ApplicationController
   private
 
   def menu_params
-    params.require(:menu).permit(:url)
+    params.require(:menu).permit(:link, :last_update)
   end
 end

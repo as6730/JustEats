@@ -3,8 +3,7 @@
 # Table name: menus
 #
 #  id            :integer          not null, primary key
-#  name          :string           not null
-#  last_update   :date             not null
+#  last_update   :string           not null
 #  restaurant_id :integer          not null
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
