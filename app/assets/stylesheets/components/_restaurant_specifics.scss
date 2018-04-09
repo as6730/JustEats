@@ -1,0 +1,24 @@
+.restaurant-specifics-container {
+  display: flex;
+  font-family: $lato;
+}
+
+.left-restaurant-specifics {
+  height: 416px;
+  width: 288px;
+  align-items: left;
+}
+
+.right-restaurant-specifics {
+  height: 416px;
+  width: 288px;
+  align-items: left;
+}
+
+.location-image {
+  height: 144px;
+  width: 288px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin: 0 0 1rem;
+}

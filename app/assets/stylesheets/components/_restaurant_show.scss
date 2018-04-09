@@ -8,14 +8,12 @@
 
 .banner-image-container {
   display: flex;
-  // overflow: hidden;
   height: 306px;
   width: 100%;
   background-color: grey;
 }
 
 .banner-image {
-  display: flex;
   width: 100%;
   height: auto;
   object-fit: cover;
@@ -38,7 +36,7 @@
 .restaurant-details-header {
   height: 48px;
   background-color: white;
-  border-radius: 5px;
+  border-radius: 2px 2px 0px 0px;
 }
 
 .restaurant-details-header > ul {
@@ -76,7 +74,7 @@
 .restaurant-reservation {
   width: 320px;
   height: 930px;
-  border-radius: 5px;
+  border-radius: 2px 2px 0px 0px;
   background-color: white;
   text-align: center;
 }

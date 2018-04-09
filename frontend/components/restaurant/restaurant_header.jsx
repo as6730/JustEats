@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import IconStar from "react-icons/lib/fa/star";
+import IconStarEmpty from "react-icons/lib/fa/star-o";
 import IconHalfStar from "react-icons/lib/fa/star-half";
 
 class RestaurantHeader extends Component {
@@ -13,6 +14,7 @@ class RestaurantHeader extends Component {
       sum += review.rating;
     });
     let avg = sum / this.props.reviews.length;
+    avg = Math.round(avg * 10) / 10;
     return avg;
   }
 
@@ -22,12 +24,16 @@ class RestaurantHeader extends Component {
     let halfStar = avg;
 
     for (let i = 0; i < Math.floor(avg); i++ ) {
-      stars.push(<IconStar key={i} />)
+      stars.push(<IconStar key={i} color="#da3743" />)
       halfStar--;
     }
 
     if (halfStar >= 0.5) {
-      stars.push(<IconHalfStar key={avg}/>)
+      stars.push(<IconHalfStar key={avg} color="#da3743" />)
+    }
+
+    while (stars.length < 5) {
+      stars.push(<IconStarEmpty key={stars.length} color="#da3743" />)
     }
 
     return stars;
@@ -44,17 +50,19 @@ class RestaurantHeader extends Component {
   render() {
     return (
       <div className="restaurant-header">
-        <div className="star-container">
-          {this.renderStars()}
+        <div className="header-specifics">
+          <icon className="restaurant-header-icon">
+            {this.renderStars()}
+          </icon>
           {this.calculateAverageRating()}
         </div>
-        <div className="total-reviews">
+        <div className="header-specifics">
           {this.props.reviews.length}
         </div>
-        <div className="price-range">
+        <div className="header-specifics">
           {this.props.priceRange}
         </div>
-        <div className="cuisine">
+        <div className="header-specifics">
           {this.getCuisine()}
         </div>
       </div>

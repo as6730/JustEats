@@ -5,13 +5,15 @@ import rootReducer from "../reducers/root_reducer";
 
 const preloadedState = {
   "restaurant": {
-    reviews: [],
-    photos: [],
-    priceRange: "",
-    cuisines: [],
-    tags: []
+    "reviews": [],
+    "photos": [],
+    "priceRange": "",
+    "cuisines": [],
+    "tags": [],
+    "paymentOptions": [],
+    "location": {}
   }
-}
+};
 
 const configureStore = () =>
   createStore(rootReducer, preloadedState, applyMiddleware(thunk, logger));

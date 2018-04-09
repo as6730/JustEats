@@ -322,15 +322,4 @@ links.each do |link|
     end
     responseObj = JSON.parse(response.body)
   end
-
-  # p restaurant_menu_sections
-  # p restaurant
-  # p restaurant_cuisines
-  # p restaurant_location
-  # p restaurant_tags
-  # p restaurant_photos
-
-  # p JSON.generate restaurant_menu
-  # p JSON.generate restaurant
-
 end

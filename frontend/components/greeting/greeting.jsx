@@ -25,37 +25,36 @@ class Greeting extends Component {
           <Link to="/signup">
             <button className="btn-signup">Sign up</button>
           </Link>
-          <Link to="/signin">
+          <Link to="/login">
             <button className="btn-signin">Sign in</button>
           </Link>
         </div>
       </div>
     );
-
-    // if (currentUser) {
-
-    //   return (
-    //     <div>
-    //       <div className="nav-greeting">Hi,{currentUser.firstname}</div>
-    //       <button className="nav-logout" onClick={logout}>
-    //         Sign out
-    //       </button>
-    //     </div>
-    //   );
-    // } else {
-    //   return (
-    //     <div className="left-nav">
-    //       <Link to="/signup">
-    //         <button className="left-nav-signup">Sign up</button>
-    //       </Link>
-    //       &nbsp;
-    //       <Link to="/login">
-    //         <button>Sign in</button>
-    //       </Link>
-    //     </div>
-    //   );
-    // }
   }
 }
+
+// if (currentUser) {
+//   return (
+//     <div className="left-nav">
+//       <div className="nav-greeting">Hi,{currentUser.firstname}</div>
+//       <button className="nav-logout" onClick={logout}>
+//         Sign out
+//       </button>
+//     </div>
+//   )
+// } else {
+//   return (
+//     <div className="left-nav">
+//       <Link to="/signup">
+//         <button className="btn-signup">Sign up</button>
+//       </Link>
+//       <Link to="/login">
+//         <button className="btn-signin">Sign in</button>
+//       </Link>
+//     </div>
+//   </div>
+//   )
+// }
 
 export default Greeting;

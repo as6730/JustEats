@@ -2,11 +2,13 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import RestaurantHeader from "./restaurant_header";
 import RestaurantTags from "./restaurant_tags";
+import RestaurantSpecifics from "./restaurant_specifics";
+import PhotoGallery from "./photo_gallery";
+import RestaurantReviews from "./restaurant_reviews";
 
 class RestaurantShow extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
   }
 
   componentDidMount() {
@@ -14,7 +16,11 @@ class RestaurantShow extends Component {
   }
 
   // add if else to see if the url is the same
-  componentWillReceiveProps(nextProps) {}
+  componentWillReceiveProps(nextProps) {
+    if (this.props.post.id != nextProps.match.params.postId) {
+      this.props.fetchPost(nextProps.match.params.postId);
+    }
+  }
 
   getBackgroundImage() {
     if (this.props.restaurant.background_image != null) {
@@ -55,6 +61,14 @@ class RestaurantShow extends Component {
             <div className="restaurant-description">
               {restaurant.description}
             </div>
+            <RestaurantSpecifics
+              restaurant={restaurant}
+              location={restaurant.location}
+              paymentOptions={restaurant.paymentOptions}
+              cuisines={restaurant.cuisines}
+              />
+            <PhotoGallery photos={restaurant.photos} />
+            <RestaurantReviews reviews={restaurant.reviews}
           </div>
           <div className="restaurant-reservation">
             <h3 className="restaurant-reservation-header">
@@ -63,21 +77,8 @@ class RestaurantShow extends Component {
           </div>
         </div>
       </div>
-    );
+    )
   }
 }
-// <h1>{restaurant.name}</h1>
-// <p>{restaurant.description}</p>
-// <ul>
-//   <li>{restaurant.phone_number}</li>
-//   <li>{restaurant.website_link}</li>
-//   <li>{restaurant.hours}</li>
-//   <li>{restaurant.dining_style}</li>
-//   <li>{restaurant.dress_code}</li>
-//   <li>{restaurant.executive_chef}</li>
-//   <li>{restaurant.price_range}</li>
-//   <li>{restaurant.private_party_facilities}</li>
-//   <li>{restaurant.private_party_contact}</li>
-// </ul>
 
 export default withRouter(RestaurantShow);

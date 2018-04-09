@@ -1,7 +1,21 @@
 .restaurant-tags {
-  display: inline-flex;
+  display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
+  // margin: 0 0 calc(-1 * 0.5rem);
+  // display: block;
   font-family: $lato;
+}
+
+.tag {
+  font-size: .875rem;
+  font-weight: 500;
+  line-height: 1;
+  color: rgb(111, 115, 123);
+  border: 1px solid rgb(216, 217, 219);
+  border-radius: 1rem;
+  padding: 0.5rem 1rem;
+  text-transform: capitalize;
+  display: inline-block;
 }
