@@ -23,59 +23,32 @@ json.restaurant do
   # json.dishes @restaurant.dishes
 
   # load any extras into controller for faster querying
-  json.reviews do
-    @restaurant.reviews.each do |review|
-      json.set! review.id do
-        json.partial! 'api/reviews/review', review: review
-      end
-    end
+
+  json.reviews @restaurant.reviews.each do |review|
+    json.partial! 'api/reviews/review', review: review
   end
 
-  json.reservations do
-    @restaurant.reservations.each do |reservation|
-      json.set! reservation.id do
-        json.partial! 'api/reservations/reservation', reservation: reservation
-      end
-    end
+  json.reservations @restaurant.reservations.each do |reservation|
+    json.partial! 'api/reservations/reservation', reservation: reservation
   end
 
-  json.photos do
-    @restaurant.photos.each do |photo|
-      json.set! photo.id do
-        json.partial! 'api/photos/photo', photo: photo
-      end
-    end
+  json.photos @restaurant.photos.each do |photo|
+    json.partial! 'api/photos/photo', photo: photo
   end
 
-  json.cuisines do
-    @restaurant.cuisines.each do |cuisine|
-      json.set! cuisine.id do
-        json.partial! 'api/cuisines/cuisine', cuisine: cuisine
-      end
-    end
+  json.cuisines @restaurant.cuisines.each do |cuisine|
+    json.partial! 'api/cuisines/cuisine', cuisine: cuisine
+  end
+  
+  json.payment_options @restaurant.payment_options.each do |payment_option|
+    json.partial! 'api/payment_options/payment_option', payment_option: payment_option
   end
 
-  json.payment_options do
-    @restaurant.payment_options.each do |payment_option|
-      json.set! payment_option.id do
-        json.partial! 'api/payment_options/payment_option', payment_option: payment_option
-      end
-    end
+  json.tags @restaurant.tags.each do |tag|
+    json.partial! 'api/tags/tag', tag: tag
   end
 
-  json.tags do
-    @restaurant.tags.each do |tag|
-      json.set! tag.id do
-        json.partial! 'api/tags/tag', tag: tag
-      end
-    end
-  end
-
-  json.favorites do
-    @restaurant.favorites.each do |favorite|
-      json.set! favorite.id do
-        json.partial! 'api/favorites/favorite', favorite: favorite
-      end
-    end
+  json.favorites  @restaurant.favorites.each do |favorite|
+    json.partial! 'api/favorites/favorite', favorite: favorite
   end
 end

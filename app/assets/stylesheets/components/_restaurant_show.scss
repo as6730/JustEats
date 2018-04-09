@@ -8,11 +8,14 @@
 
 .banner-image-container {
   display: flex;
-  overflow: hidden;
+  // overflow: hidden;
   height: 306px;
+  width: 100%;
+  background-color: grey;
 }
 
 .banner-image {
+  display: flex;
   width: 100%;
   height: auto;
   object-fit: cover;

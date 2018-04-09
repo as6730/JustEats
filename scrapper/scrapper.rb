@@ -32,6 +32,10 @@ links.each do |link|
     restaurant["name"] = el.children[0].text
   end
 
+  doc.xpath('//span[starts-with(@itemprop, "priceRange")]').each do |el|
+    restaurant["price_range"] = el.text
+  end
+
   doc.xpath('//div[starts-with(@id, "oc-menu")]').each do |el|
     el.xpath('.//a[starts-with(@class, "_4076c644")]').each do |link|
       restaurant_menu["link"] = link.attr('href')

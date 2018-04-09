@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
+import RestaurantHeader from "./restaurant_header";
+import RestaurantTags from "./restaurant_tags";
 
 class RestaurantShow extends Component {
   constructor(props) {
@@ -14,15 +16,24 @@ class RestaurantShow extends Component {
   // add if else to see if the url is the same
   componentWillReceiveProps(nextProps) {}
 
+  getBackgroundImage() {
+    if (this.props.restaurant.background_image != null) {
+      return this.props.restaurant.background_image
+    }
+
+    if (this.props.restaurant.photos.length === 0) {
+      return ""
+    }
+
+    return this.props.restaurant.photos[0].url
+  }
+
   render() {
     const restaurant = this.props.restaurant;
     return (
       <div className="restaurant-container">
         <div className="banner-image-container">
-          <img
-            className="banner-image"
-            src="https://resizer.otstatic.com/v2/photos/wide-huge/24093814.jpg"
-          />
+          <img className="banner-image" src={this.getBackgroundImage()} />
         </div>
         <div className="restaurant-info-container">
           <div className="restaurant-details">
@@ -35,6 +46,12 @@ class RestaurantShow extends Component {
               </ul>
             </div>
             <div className="restaurant-name">{restaurant.name}</div>
+            <RestaurantHeader
+              reviews={restaurant.reviews}
+              priceRange={restaurant.priceRange}
+              cuisines={restaurant.cuisines}
+              />
+            <RestaurantTags tags={restaurant.tags}/>
             <div className="restaurant-description">
               {restaurant.description}
             </div>
