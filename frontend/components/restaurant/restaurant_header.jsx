@@ -4,7 +4,7 @@ import IconStarEmpty from "react-icons/lib/fa/star-o";
 import IconHalfStar from "react-icons/lib/fa/star-half";
 import IconMoney from "react-icons/lib/fa/money";
 import IconComment from "react-icons/lib/fa/comments-o";
-import IconCuisine from "react-icons/lib/io/fork";
+import IconCuisine from "react-icons/lib/fa/cutlery";
 
 class RestaurantHeader extends Component {
   constructor(props) {
@@ -72,7 +72,7 @@ class RestaurantHeader extends Component {
           {this.props.priceRange}
         </div>
         <div className="header-specifics">
-          <IconCuisine size={20} />
+          <IconCuisine size={14} />
         </div>
         <div className="header-specifics">
           {this.getCuisine()}

@@ -75,13 +75,13 @@ class RestaurantShow extends Component {
             <RestaurantTags tags={restaurant.tags}/>
             <div className={`restaurant-description ${toggledClass}`}>
               {restaurant.description}
-              {
-                this.showReadMoreBtn() &&
-                  <button className="read-more" onClick={() => this.setState({ expanded: !expanded })}>
-                  {expanded ? '- Read Less' : '+ Read More'}
-                  </button>
-              }
             </div>
+            {
+              this.showReadMoreBtn() &&
+              <button className="read-more" onClick={() => this.setState({ expanded: !expanded })}>
+                {expanded ? '- Read Less' : '+ Read More'}
+              </button>
+            }
             <RestaurantSpecifics
               restaurant={restaurant}
               location={restaurant.location}

@@ -1,15 +1,43 @@
 .restaurant-specifics-container {
   display: flex;
+  flex-direction: row;
   font-family: $lato;
+  font-size: 11px;
+  margin: 25px;
 }
 
 .left-restaurant-specifics {
+  display: flex;
+  flex-direction: column;
   height: 416px;
   width: 288px;
   align-items: left;
 }
 
+.restaurant-specific-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.restaurant-specifics-title {
+  font-weight: bold;
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+
+.restaurant-specifics-info {
+  font-weight: lighter;
+  font-size: 13px;
+  margin-left: 18px;
+  margin-bottom: 10px;
+  padding-right: 5px;
+  color: #484848;
+}
+
+
 .right-restaurant-specifics {
+  display: flex;
+  flex-direction: column;
   height: 416px;
   width: 288px;
   align-items: left;
