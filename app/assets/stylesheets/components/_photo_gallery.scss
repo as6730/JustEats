@@ -25,10 +25,9 @@
   display: flex;
   align-items: flex-end;
   list-style-type: none;
+  width: 640px;
 }
 
-//
-// .photo-gallery-li {
-//   display: list-item;
-// text-align: -webkit-match-parent;
-// }
+.photo-gallery-li {
+  width: 128px;
+}

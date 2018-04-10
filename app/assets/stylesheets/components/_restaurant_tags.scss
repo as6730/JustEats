@@ -3,9 +3,9 @@
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  // margin: 0 0 calc(-1 * 0.5rem);
-  // display: block;
   font-family: $lato;
+  margin: 25px;
+  margin-top: 5px;
 }
 
 .tag {
@@ -18,4 +18,5 @@
   padding: 0.5rem 1rem;
   text-transform: capitalize;
   display: inline-block;
+  margin: 5px;
 }

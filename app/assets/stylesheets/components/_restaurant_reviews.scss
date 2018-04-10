@@ -1,0 +1,48 @@
+.review-details {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  align-items: center;
+}
+
+.review-detail {
+  margin: 5px;
+  display: flex;
+}
+
+.review-response {
+  overflow: hidden;
+  line-height: 1.2em;
+  height: 3.6em;
+  font-size: 14px;
+  padding: 5px;
+}
+
+.review-response.collapsed{
+  overflow: hidden;
+  height: 45px;
+}
+
+.review-response.expanded{
+  overflow: visible;
+  height: auto;
+}
+
+.review-footer {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 12px;
+  align-items: center;
+}
+
+.footer-icon {
+    padding-left: 10px;
+}
+
+.read-more {
+  color: rgb(218, 55, 67);
+  text-decoration: none;
+  font-size: 12.5px;
+  height: 24px;
+}

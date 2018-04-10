@@ -9,6 +9,14 @@ class PhotoGallery extends Component {
   }
 
   createPhotoShow() {
+    let photos = this.props.photos;
+    let photosTwo = this.props.photos;
+    let duplicates = [];
+
+    if (photos.length < 5) {
+      duplicates.push(photos.slice(0))
+    }
+
     return this.props.photos.slice(0, 5);
   }
 

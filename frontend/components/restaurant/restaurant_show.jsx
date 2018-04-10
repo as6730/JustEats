@@ -9,6 +9,9 @@ import RestaurantReviews from "./restaurant_reviews";
 class RestaurantShow extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      expanded: false
+    }
   }
 
   componentDidMount() {
@@ -22,19 +25,42 @@ class RestaurantShow extends Component {
   }
 
   getBackgroundImage() {
-    if (this.props.restaurant.background_image != null) {
-      return this.props.restaurant.background_image
+    const img = this.props.restaurant.background_image;
+    const photos = this.props.restaurant.photos;
+
+    if (img != null) {
+      return img;
+    } else if (photos.length === 0) {
+      return "";
+    } else if (photos.length === 5) {
+      photos.map((photo, idx) => {
+        return (
+          <div>
+            <ul className="photo-collage">
+              <li key={idx} className="photo-collage-item">{photo.url}</li>
+            </ul>
+          </div>
+        )
+      })
+    } else {
+      return photos[0].url;
+    }
+  }
+
+  showReadMoreBtn() {
+    if (this.props.restaurant.description === undefined ||
+       this.props.restaurant.description.length < 200) {
+      return false;
     }
 
-    if (this.props.restaurant.photos.length === 0) {
-      return ""
-    }
-
-    return this.props.restaurant.photos[0].url
+    return true;
   }
 
   render() {
     const restaurant = this.props.restaurant;
+    const { expanded } = this.state;
+    const toggledClass = expanded ? 'expanded' : 'collapsed';
+
     return (
       <div className="restaurant-container">
         <div className="banner-image-container">
@@ -57,8 +83,14 @@ class RestaurantShow extends Component {
               cuisines={restaurant.cuisines}
               />
             <RestaurantTags tags={restaurant.tags}/>
-            <div className="restaurant-description">
+            <div className={`restaurant-description ${toggledClass}`}>
               {restaurant.description}
+              {
+                this.showReadMoreBtn() &&
+                  <button className="read-more" onClick={() => this.setState({ expanded: !expanded })}>
+                  {expanded ? '- Read Less' : '+ Read More'}
+                  </button>
+              }
             </div>
             <RestaurantSpecifics
               restaurant={restaurant}
