@@ -23,27 +23,7 @@ class Api::UsersController < ApplicationController
       render json: @user.errors.full_messages, status: 401
     end
   end
-
-  # def edit
-  #   @user = User.find(params[:id])
-  #
-  #   if @user.save
-  #
-  #   else
-  #
-  #   end
-  # end
-  #
-  # def update
-  #   @user = User.find_by(params[:id])
-  #
-  #   if @user.update_attributes(user_params)
-  #     render "/api/users/{@user}"
-  #   else
-  #     render json: @user.errors.full_messages, status: 422
-  #   end
-  # end
-
+  
   private
 
   def user_params

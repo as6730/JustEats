@@ -2,10 +2,37 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import IconDotCircle from "react-icons/lib/fa/dot-circle-o";
 import IconCircle from "react-icons/lib/fa/circle";
+import LoginModal from "./login_modal"
+import SignUpModal from "./signup_modal"
 
 class Greeting extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      showLogin: false,
+      showSignUp: false
+    }
+
+    this.onLogin = this.onLogin.bind(this);
+    this.onSignUp = this.onSignUp.bind(this);
+    this.onDismiss = this.onDismiss.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.checkSession();
+  }
+
+  onDismiss() {
+    this.setState({showLogin: false, showSignUp: false})
+  }
+
+  onLogin(username, password) {
+    this.props.onLogin(username, password);
+  }
+
+  onSignUp(username, password, firstname, lastname, email) {
+    this.props.onSignUp(username, password, firstname, lastname, email);
   }
 
   render() {
@@ -22,39 +49,52 @@ class Greeting extends Component {
           </div>
         </Link>
         <div className="left-nav">
-          <Link to="/signup">
-            <button className="btn-signup">Sign up</button>
-          </Link>
-          <Link to="/login">
-            <button className="btn-signin">Sign in</button>
-          </Link>
+          {(currentUser === null) ?
+              <nav className="login-signup">
+                <button onClick={() => {
+                    this.setState({showSignUp: true, showLogin: false})
+                  }}
+                  className="btn-signup">
+                  Sign up
+                </button>
+                <button onClick={() => {
+                    this.setState({showLogin: true, showSignUp: false})
+                  }}
+                  className="btn-signin">
+                  Sign in
+                </button>
+              </nav>
+          :
+            <div>
+              Hi, {currentUser.firstname}
+
+              <button onClick={() => {
+                  this.props.logout()
+                  this.setState({showLogin: false, showSignUp: false})
+                }}
+                className="btn-signup">
+                Logout
+              </button>
+            </div>
+          }
         </div>
+
+        {(this.state.showLogin && currentUser === null) &&
+          <LoginModal
+            errors={this.props.errors}
+            onLogin={this.onLogin}
+            onDismiss={this.onDismiss}/>
+        }
+
+        {(this.state.showSignUp && currentUser === null) &&
+          <SignUpModal
+            errors={this.props.errors}
+            onSignUp={this.onSignUp}
+            onDismiss={this.onDismiss}/>
+        }
       </div>
     );
   }
 }
-
-// if (currentUser) {
-//   return (
-//     <div className="left-nav">
-//       <div className="nav-greeting">Hi,{currentUser.firstname}</div>
-//       <button className="nav-logout" onClick={logout}>
-//         Sign out
-//       </button>
-//     </div>
-//   )
-// } else {
-//   return (
-//     <div className="left-nav">
-//       <Link to="/signup">
-//         <button className="btn-signup">Sign up</button>
-//       </Link>
-//       <Link to="/login">
-//         <button className="btn-signin">Sign in</button>
-//       </Link>
-//     </div>
-//   </div>
-//   )
-// }
 
 export default Greeting;

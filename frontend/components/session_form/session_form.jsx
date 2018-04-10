@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 
-// presentational component (think of it as the partial)
-
+// presentational component 
 class SessionForm extends Component {
   constructor(props) {
     super(props);
@@ -13,6 +12,7 @@ class SessionForm extends Component {
       password: "",
       username: ""
     };
+
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderSignUp = this.renderSignUp.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
@@ -28,7 +28,7 @@ class SessionForm extends Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
-    this.props.processForm(user);
+    this.props.processForm(user).then(this.props.closeModal);
   }
 
   renderErrors() {
@@ -52,6 +52,7 @@ class SessionForm extends Component {
               type="text"
               value={this.state.firstname}
               onChange={this.update("firstname")}
+              className="login-input"
             />
           </label>
           <br />
@@ -61,6 +62,7 @@ class SessionForm extends Component {
               type="text"
               value={this.state.lastname}
               onChange={this.update("lastname")}
+              className="login-input"
             />
           </label>
           <br />
@@ -70,6 +72,7 @@ class SessionForm extends Component {
               type="text"
               value={this.state.email}
               onChange={this.update("email")}
+              className="login-input"
             />
           </label>
         </div>
@@ -80,9 +83,10 @@ class SessionForm extends Component {
   render() {
     return (
       <div className="login-form">
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} className="login-form-box">
           {this.props.formType} or {this.props.navLink}
           {this.renderErrors()}
+          <div onClick={this.props.closeModal} className="close-x">X</div>
           <div>
             <label>
               Username
@@ -90,6 +94,7 @@ class SessionForm extends Component {
                 type="text"
                 value={this.state.username}
                 onChange={this.update("username")}
+                className="login-input"
               />
             </label>
             <br />
@@ -99,6 +104,7 @@ class SessionForm extends Component {
                 type="password"
                 value={this.state.password}
                 onChange={this.update("password")}
+                className="login-input"
               />
             </label>
             <br />

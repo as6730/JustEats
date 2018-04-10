@@ -17,3 +17,9 @@ export const logout = () =>
     method: "DELETE",
     url: "/api/session"
   });
+
+export const checkSession = () =>
+  $.ajax({
+    method: "GET",
+    url: "/api/session"
+  });

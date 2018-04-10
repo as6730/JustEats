@@ -15,10 +15,9 @@ class RestaurantShow extends Component {
     this.props.fetchRestaurant(this.props.match.params.restaurantId);
   }
 
-  // add if else to see if the url is the same
   componentWillReceiveProps(nextProps) {
-    if (this.props.post.id != nextProps.match.params.postId) {
-      this.props.fetchPost(nextProps.match.params.postId);
+    if (this.props.restaurant.id != nextProps.match.params.restaurantId) {
+      this.props.fetchRestaurant(nextProps.match.params.restaurantId);
     }
   }
 
@@ -68,7 +67,7 @@ class RestaurantShow extends Component {
               cuisines={restaurant.cuisines}
               />
             <PhotoGallery photos={restaurant.photos} />
-            <RestaurantReviews reviews={restaurant.reviews}
+            <RestaurantReviews reviews={restaurant.reviews} />
           </div>
           <div className="restaurant-reservation">
             <h3 className="restaurant-reservation-header">
@@ -80,5 +79,6 @@ class RestaurantShow extends Component {
     )
   }
 }
+
 
 export default withRouter(RestaurantShow);

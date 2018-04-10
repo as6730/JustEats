@@ -112,11 +112,11 @@ class RestaurantSpecifics extends Component {
     return (
       specifics.map((specific, idx) => {
         return (
-          <div>
-            <div className="restaurant-specifics-title" >
+          <div className="restaurant-specific-container" key={idx}>
+            <div className="restaurant-specifics-title">
               {specific[0]}
             </div>
-            <div className="restaurant-specifics-info" >
+            <div className="restaurant-specifics-info">
               {specific[1]}
             </div>
           </div>
@@ -131,7 +131,7 @@ class RestaurantSpecifics extends Component {
     return (
       specifics.map((specific, idx) => {
         return (
-          <div>
+          <div className="restaurant-specific-container" key={idx}>
             <div className="restaurant-specifics-title" >
               {specific[0]}
             </div>

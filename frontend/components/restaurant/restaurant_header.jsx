@@ -51,9 +51,9 @@ class RestaurantHeader extends Component {
     return (
       <div className="restaurant-header">
         <div className="header-specifics">
-          <icon className="restaurant-header-icon">
+          <div className="restaurant-header-icon">
             {this.renderStars()}
-          </icon>
+          </div>
           {this.calculateAverageRating()}
         </div>
         <div className="header-specifics">
