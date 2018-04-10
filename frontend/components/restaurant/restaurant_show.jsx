@@ -32,19 +32,9 @@ class RestaurantShow extends Component {
       return img;
     } else if (photos.length === 0) {
       return "";
-    } else if (photos.length === 5) {
-      photos.map((photo, idx) => {
-        return (
-          <div>
-            <ul className="photo-collage">
-              <li key={idx} className="photo-collage-item">{photo.url}</li>
-            </ul>
-          </div>
-        )
-      })
-    } else {
-      return photos[0].url;
     }
+
+    return photos[0].url;
   }
 
   showReadMoreBtn() {

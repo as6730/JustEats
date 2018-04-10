@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import IconStar from "react-icons/lib/fa/star";
 import IconStarEmpty from "react-icons/lib/fa/star-o";
 import IconHalfStar from "react-icons/lib/fa/star-half";
+import IconMoney from "react-icons/lib/fa/money";
+import IconComment from "react-icons/lib/fa/comments-o";
+import IconCuisine from "react-icons/lib/io/fork";
 
 class RestaurantHeader extends Component {
   constructor(props) {
@@ -24,16 +27,16 @@ class RestaurantHeader extends Component {
     let halfStar = avg;
 
     for (let i = 0; i < Math.floor(avg); i++ ) {
-      stars.push(<IconStar key={i} color="#da3743" />)
+      stars.push(<IconStar size={20} key={i} color="#da3743" />)
       halfStar--;
     }
 
     if (halfStar >= 0.5) {
-      stars.push(<IconHalfStar key={avg} color="#da3743" />)
+      stars.push(<IconHalfStar size={20} key={avg} color="#da3743" />)
     }
 
     while (stars.length < 5) {
-      stars.push(<IconStarEmpty key={stars.length} color="#da3743" />)
+      stars.push(<IconStarEmpty size={20} key={stars.length} color="#da3743" />)
     }
 
     return stars;
@@ -51,16 +54,25 @@ class RestaurantHeader extends Component {
     return (
       <div className="restaurant-header">
         <div className="header-specifics">
-          <div className="restaurant-header-icon">
-            {this.renderStars()}
-          </div>
+          {this.renderStars()}
+        </div>
+        <div className="header-specifics">
           {this.calculateAverageRating()}
+        </div>
+        <div className="header-specifics">
+          <IconComment size={20} />
         </div>
         <div className="header-specifics">
           {this.props.reviews.length}
         </div>
         <div className="header-specifics">
+          <IconMoney size={20} />
+        </div>
+        <div className="header-specifics">
           {this.props.priceRange}
+        </div>
+        <div className="header-specifics">
+          <IconCuisine size={20} />
         </div>
         <div className="header-specifics">
           {this.getCuisine()}
