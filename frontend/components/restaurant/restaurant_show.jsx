@@ -5,6 +5,7 @@ import RestaurantTags from "./restaurant_tags";
 import RestaurantSpecifics from "./restaurant_specifics";
 import PhotoGallery from "./photo_gallery";
 import RestaurantReviews from "./restaurant_reviews";
+import MakeReservation from "./make_reservation";
 
 class RestaurantShow extends Component {
   constructor(props) {
@@ -91,11 +92,9 @@ class RestaurantShow extends Component {
             <PhotoGallery photos={restaurant.photos} />
             <RestaurantReviews reviews={restaurant.reviews} />
           </div>
-          <div className="restaurant-reservation">
-            <h3 className="restaurant-reservation-header">
-              Make a reservation
-            </h3>
-          </div>
+          <MakeReservation
+            restaurant={restaurant}
+          />
         </div>
       </div>
     )
