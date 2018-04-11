@@ -7,6 +7,7 @@ import GreetingContainer from "./greeting/greeting_container";
 import LoginFormContainer from "./session_form/login_form_container";
 import SignupFormContainer from "./session_form/signup_form_container";
 import RestaurantShowContainer from "./restaurant/restaurant_show_container";
+import HomePage from "./restaurant/home_page";
 
 // <Route exact path="/" component={GreetingContainer} />
 const App = () => (
@@ -15,6 +16,11 @@ const App = () => (
       <nav className="nav-bar-main">
         <GreetingContainer />
         <Switch>
+          <Route
+            exact
+            path="/"
+            component={HomePage}
+            />
           <Route
             exact
             path="/restaurants/:restaurantId"

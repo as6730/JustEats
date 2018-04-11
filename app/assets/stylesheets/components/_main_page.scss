@@ -1,101 +1,64 @@
-.reservation-container {
-  width: 320px;
-  height: 320px;
-  border-radius: 2px 2px 0px 0px;
+.home-banner-image-container {
+  display: flex;
+  position: relative;
+  height: 368px;
+  width: 100%;
+  background-color: grey;
+  border-bottom: 1px solid rgba(0,0,0,.08);
+}
+
+.home-banner-image {
+  display: flex;
+  width: 100%;
+  height: 368px;
+  object-fit: cover;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.search-bar-container {
+  position: relative;
+  width: 1048px;
+  height: 182px;
   background-color: white;
-  text-align: center;
-  box-shadow: 0 0 10px #ccc;
-  height: 340px;
-}
-
-.reservation-options {
-  display: flex;
-  flex-direction: row;
-  font-family: $lato;
-  font-size: 11px;
-  margin: 15px;
-}
-
-.reservation-header {
-  height: 40px;
-  font-size: 20px;
-  border-bottom: 1px solid #d8d9db;
-  padding-top: 8px;
-  border-bottom: 1px solid #d8d9db;
-}
-
-.reservation-size {
-  height: 22px;
-  width: 288px;
-  font-size: 13px;
-  margin-left: 15px;
-  display: flex;
-  margin-top: 15px;
-}
-
-.left-reservation-date {
+  margin-top: -105px;
+  margin-left: 13%;
+  border-radius: 5px 5px 0px 0px;
   display: flex;
   flex-direction: column;
-  align-items: left;
-  font-size: 13px;
-  height: 5px;
-  width: 0px;
+  box-shadow: 0 0 10px #ccc;
+
+}
+.search-bar-header {
+  padding: 15px;
+  width: 1000px;
+  height: 40px;
 }
 
-.right-reservation-time {
-  height: 10px;
-  font-size: 13px;
+.page-header-title {
+  width: 1000px;
+  height: 56px;
+  padding-top: 10px;
+  margin-left: 5px;
+  font-size: 45px;
+  font-family: $lato;
+  color: #333;
+  font-weight: 700;
 }
 
-.btn-submit-reservation {
-  height: 30px;
-  width: 270px;
+.content-body {
+  height: 78px;
+  width: 1048px;
+  display: flex;
   font-family: $lato;
   font-size: 14px;
-  padding: 10px;
-  background-color: #da3743;
-  border-radius: 3px;
-  text-align: center;
-  border-color: #b8222d;
-  color: #fff;
-  margin-top: 20px;
-  font-weight: lighter;
+  align-items: center;
 }
 
-.btn-favorite {
-  height: 30px;
-  width: 280px;
-  font-family: $lato;
-  font-size: 13px;
-  padding: 10px;
-  border-radius: 3px;
-  text-align: center;
-  margin-top: 20px;
-  margin-left: 6px;
-  font-weight: lighter;
-  border: 1px solid #d8d9db;
-  border-radius: 0px;
-  background-color: white;
-  text-align: center;
-  box-shadow: 0;
-}
 
-.btn-favorite:hover {
-  border: 1px solid #da3743;
-}
-
-.bookingAmt {
-  font-size: 13px;
-  margin: 15px;
-  display: flex;
-  justify-content: flex-start;
-}
+// buttons
 
 select.select-size {
-  // background-image:
-  //   linear-gradient(45deg, transparent 50%, gray 50%),
-  //   linear-gradient(135deg, gray 50%, transparent 50%),
-  //   linear-gradient(to right, #ccc, #ccc);
   background-position:
     calc(100% - 20px) calc(1em + 2px),
     calc(100% - 15px) calc(1em + 2px),
@@ -106,7 +69,7 @@ select.select-size {
     1px 1.5em;
   background-repeat: no-repeat;
   height: 35px;
-    width: 290px;
+  width: 290px;
 }
 
 select.select-size:focus {
@@ -128,10 +91,6 @@ select.select-size:focus {
 }
 
 select.select-date {
-  // background-image:
-  //   linear-gradient(45deg, transparent 50%, gray 50%),
-  //   linear-gradient(135deg, gray 50%, transparent 50%),
-  //   linear-gradient(to right, #ccc, #ccc);
   background-position:
     calc(100% - 20px) calc(1em + 2px),
     calc(100% - 15px) calc(1em + 2px),
@@ -165,10 +124,6 @@ select.select-date:focus {
 }
 
 select.select-time {
-  // background-image:
-  //   linear-gradient(45deg, transparent 50%, gray 50%),
-  //   linear-gradient(135deg, gray 50%, transparent 50%),
-  //   linear-gradient(to right, #ccc, #ccc);
   background-position:
     calc(100% - 20px) calc(1em + 2px),
     calc(100% - 15px) calc(1em + 2px),
@@ -199,4 +154,21 @@ select.select-time:focus {
   background-repeat: no-repeat;
   border-color: none;
   outline: 0;
+}
+
+.home-btn-submit-reservation {
+  height: 30px;
+  width: 160px;
+  font-family: $lato;
+  font-size: 14px;
+  padding: 10px;
+  background-color: #da3743;
+  border-radius: 3px;
+  text-align: center;
+  border-color: #b8222d;
+  color: #fff;
+  margin-top: 20px;
+  display: flex;
+  font-weight: lighter;
+  justify-content: center;
 }
