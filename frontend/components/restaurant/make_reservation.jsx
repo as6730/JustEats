@@ -7,7 +7,7 @@ class MakeReservation extends Component {
     super(props);
     this.state = {
       partySize: 2,
-      date: "Monday",
+      date: 0,
       time: "7:30 PM"
     }
 
@@ -98,6 +98,26 @@ class MakeReservation extends Component {
     )
   }
 
+  getDate() {
+    let date = new Date();
+    let currentDay = date.getDay();
+    let distance = (this.state.date + 7 - currentDay) % 7;
+
+    date.setDate(date.getDate() + distance);
+    console.log(date);
+    return date;
+  }
+
+  processAndCreateReservation() {
+    let reservation = {
+      'party_size': parseInt(this.state.partySize),
+      'points': 125,
+      'date': this.getDate()
+    };
+
+    this.props.createReservation(this.props.restaurant.id, reservation);
+  }
+
   render() {
     return (
       <div>
@@ -120,6 +140,7 @@ class MakeReservation extends Component {
             {this.timeOptions()}
           </div>
           <button
+            onClick={() => this.processAndCreateReservation()}
             className="btn-submit-reservation">
             Reserve a Table
           </button>

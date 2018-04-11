@@ -20,8 +20,6 @@ const App = () => (
             path="/restaurants/:restaurantId"
             component={RestaurantShowContainer}
           />
-          <AuthRoute exact path="/login" component={LoginFormContainer} />
-          <AuthRoute exact path="/signup" component={SignupFormContainer} />
         </Switch>
       </nav>
     </div>

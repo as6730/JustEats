@@ -15,7 +15,7 @@ class Api::ReservationsController < ApplicationController
     @reservation.restaurant_id = params[:restaurant_id]
 
     if @reservation.save
-      render :show
+      render json: @reservation
     else
       render json: @reservation.errors.full_messages, status: 422
     end
@@ -25,7 +25,7 @@ class Api::ReservationsController < ApplicationController
     @reservation = current_user.reservations.find(params[:id])
 
     if @reservation.update_attributes(JSON.parse(request.body.read))
-      render :show
+      render json: @reservation
     else
       render json: @reservation.errors.full_messages, status: 404
     end

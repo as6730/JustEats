@@ -94,6 +94,7 @@ class RestaurantShow extends Component {
           </div>
           <MakeReservation
             restaurant={restaurant}
+            createReservation={this.props.createReservation}
           />
         </div>
       </div>
