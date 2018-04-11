@@ -95,6 +95,12 @@ class SignUpModal extends PureComponent {
             className="btn-submit-form">
             Create Account
           </button>
+          <button onClick={() => {
+              this.props.onLogin("DemoUser", "password")
+            }}
+            className="btn-submit-form">
+            Demo Login
+          </button>
           <div className="error">{this.props.errors[0]}</div>
         </div>
       </div>

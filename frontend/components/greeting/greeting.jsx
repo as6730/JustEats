@@ -90,6 +90,7 @@ class Greeting extends Component {
           <SignUpModal
             errors={this.props.errors}
             onSignUp={this.onSignUp}
+            onLogin={this.onLogin}
             onDismiss={this.onDismiss}/>
         }
       </div>
