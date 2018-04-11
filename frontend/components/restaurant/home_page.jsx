@@ -82,9 +82,6 @@ class HomePage extends Component {
             </h1>
           </div>
           <div className="content-body">
-            {this.partySizeOptions()}
-            {this.dateOptions()}
-            {this.timeOptions()}
             <button
               onClick={() => this.processAndCreateReservation()}
               className="home-btn-submit-reservation">
@@ -96,5 +93,9 @@ class HomePage extends Component {
     )
   }
 }
+
+// {this.partySizeOptions()}
+// {this.dateOptions()}
+// {this.timeOptions()}
 
 export default HomePage;

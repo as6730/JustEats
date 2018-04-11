@@ -58,103 +58,103 @@
 
 // buttons
 
-select.select-size {
-  background-position:
-    calc(100% - 20px) calc(1em + 2px),
-    calc(100% - 15px) calc(1em + 2px),
-    calc(100% - 2.5em) 0.5em;
-  background-size:
-    5px 5px,
-    5px 5px,
-    1px 1.5em;
-  background-repeat: no-repeat;
-  height: 35px;
-  width: 290px;
-}
-
-select.select-size:focus {
-  background-image:
-    linear-gradient(45deg, gray 50%, transparent 50%),
-    linear-gradient(135deg, transparent 50%, gray 50%),
-    linear-gradient(to right, #ccc, #ccc);
-  background-position:
-    calc(100% - 15px) 1em,
-    calc(100% - 20px) 1em,
-    calc(100% - 2.5em) 0.5em;
-  background-size:
-    5px 5px,
-    5px 5px,
-    1px 1.5em;
-  background-repeat: no-repeat;
-  border-color: none;
-  outline: 0;
-}
-
-select.select-date {
-  background-position:
-    calc(100% - 20px) calc(1em + 2px),
-    calc(100% - 15px) calc(1em + 2px),
-    calc(100% - 2.5em) 0.5em;
-  background-size:
-    5px 5px,
-    5px 5px,
-    1px 1.5em;
-  background-repeat: no-repeat;
-  height: 32px;
-  width: 145px;
-  margin-top: 30px;
-}
-
-select.select-date:focus {
-  background-image:
-    linear-gradient(45deg, gray 50%, transparent 50%),
-    linear-gradient(135deg, transparent 50%, gray 50%),
-    linear-gradient(to right, #ccc, #ccc);
-  background-position:
-    calc(100% - 15px) 1em,
-    calc(100% - 20px) 1em,
-    calc(100% - 2.5em) 0.5em;
-  background-size:
-    5px 5px,
-    5px 5px,
-    1px 1.5em;
-  background-repeat: no-repeat;
-  border-color: none;
-  outline: 0;
-}
-
-select.select-time {
-  background-position:
-    calc(100% - 20px) calc(1em + 2px),
-    calc(100% - 15px) calc(1em + 2px),
-    calc(100% - 2.5em) 0.5em;
-  background-size:
-    5px 5px,
-    5px 5px,
-    1px 1.5em;
-  background-repeat: no-repeat;
-  height: 32px;
-  width: 140px;
-  margin-top: 30px;
-}
-
-select.select-time:focus {
-  background-image:
-    linear-gradient(45deg, gray 50%, transparent 50%),
-    linear-gradient(135deg, transparent 50%, gray 50%),
-    linear-gradient(to right, #ccc, #ccc);
-  background-position:
-    calc(100% - 15px) 1em,
-    calc(100% - 20px) 1em,
-    calc(100% - 2.5em) 0.5em;
-  background-size:
-    5px 5px,
-    5px 5px,
-    1px 1.5em;
-  background-repeat: no-repeat;
-  border-color: none;
-  outline: 0;
-}
+// select.select-size {
+//   background-position:
+//     calc(100% - 20px) calc(1em + 2px),
+//     calc(100% - 15px) calc(1em + 2px),
+//     calc(100% - 2.5em) 0.5em;
+//   background-size:
+//     5px 5px,
+//     5px 5px,
+//     1px 1.5em;
+//   background-repeat: no-repeat;
+//   height: 35px;
+//   width: 290px;
+// }
+//
+// select.select-size:focus {
+//   background-image:
+//     linear-gradient(45deg, gray 50%, transparent 50%),
+//     linear-gradient(135deg, transparent 50%, gray 50%),
+//     linear-gradient(to right, #ccc, #ccc);
+//   background-position:
+//     calc(100% - 15px) 1em,
+//     calc(100% - 20px) 1em,
+//     calc(100% - 2.5em) 0.5em;
+//   background-size:
+//     5px 5px,
+//     5px 5px,
+//     1px 1.5em;
+//   background-repeat: no-repeat;
+//   border-color: none;
+//   outline: 0;
+// }
+//
+// select.select-date {
+//   background-position:
+//     calc(100% - 20px) calc(1em + 2px),
+//     calc(100% - 15px) calc(1em + 2px),
+//     calc(100% - 2.5em) 0.5em;
+//   background-size:
+//     5px 5px,
+//     5px 5px,
+//     1px 1.5em;
+//   background-repeat: no-repeat;
+//   height: 32px;
+//   width: 145px;
+//   margin-top: 30px;
+// }
+//
+// select.select-date:focus {
+//   background-image:
+//     linear-gradient(45deg, gray 50%, transparent 50%),
+//     linear-gradient(135deg, transparent 50%, gray 50%),
+//     linear-gradient(to right, #ccc, #ccc);
+//   background-position:
+//     calc(100% - 15px) 1em,
+//     calc(100% - 20px) 1em,
+//     calc(100% - 2.5em) 0.5em;
+//   background-size:
+//     5px 5px,
+//     5px 5px,
+//     1px 1.5em;
+//   background-repeat: no-repeat;
+//   border-color: none;
+//   outline: 0;
+// }
+//
+// select.select-time {
+//   background-position:
+//     calc(100% - 20px) calc(1em + 2px),
+//     calc(100% - 15px) calc(1em + 2px),
+//     calc(100% - 2.5em) 0.5em;
+//   background-size:
+//     5px 5px,
+//     5px 5px,
+//     1px 1.5em;
+//   background-repeat: no-repeat;
+//   height: 32px;
+//   width: 140px;
+//   margin-top: 30px;
+// }
+//
+// select.select-time:focus {
+//   background-image:
+//     linear-gradient(45deg, gray 50%, transparent 50%),
+//     linear-gradient(135deg, transparent 50%, gray 50%),
+//     linear-gradient(to right, #ccc, #ccc);
+//   background-position:
+//     calc(100% - 15px) 1em,
+//     calc(100% - 20px) 1em,
+//     calc(100% - 2.5em) 0.5em;
+//   background-size:
+//     5px 5px,
+//     5px 5px,
+//     1px 1.5em;
+//   background-repeat: no-repeat;
+//   border-color: none;
+//   outline: 0;
+// }
 
 .home-btn-submit-reservation {
   height: 30px;
