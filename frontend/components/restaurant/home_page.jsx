@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import FeaturedPhotos from "./featured_photos";
+import HomePageSlickr from "./home_page_slickr";
 
 class HomePage extends Component {
   constructor(props) {
@@ -93,6 +94,7 @@ class HomePage extends Component {
           <h1 className="top-cuisines-header">
             Top Cuisines near San Francisco
           </h1>
+          <HomePageSlickr />
         </div>
         <FeaturedPhotos />
         <footer className="footer">
