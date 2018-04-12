@@ -20,6 +20,7 @@ const RestaurantReducer = (state = {}, action) => {
       return action.payload.restaurant;
     // return merge({}, oldState, { [action.post.id]: action.post });
     case RECEIVE_REVIEW:
+      newState.reviews = newState.reviews.filter(review => review.id !== action.review.id);
       newState.reviews.unshift(action.review);
       return newState;
     case REMOVE_REVIEW:

@@ -97,6 +97,12 @@ class RestaurantReview extends Component {
                 <IconDelete size={20} /> Delete
               </div>
             }
+            {
+              (this.props.currentUser.username === this.props.review.username) &&
+              <div className="footer-icon" onClick={this.props.editReview}>
+                <IconDelete size={20} /> Edit
+              </div>
+            }
         </div>
 
 

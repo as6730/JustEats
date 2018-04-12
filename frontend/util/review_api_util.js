@@ -24,7 +24,7 @@ export const createReview = (restaurantId, review) => (
 
 export const updateReview = (restaurantId, review) => (
   $.ajax({
-    url: `/api/restaurants/${restaurantId}/reviews/${review.id}`,
+    url: `/api/reviews/${review.id}`,
     method: 'PATCH',
     data: JSON.stringify(review),
     contentType: "application/json; charset=utf-8",

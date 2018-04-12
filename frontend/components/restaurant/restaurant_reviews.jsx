@@ -16,6 +16,16 @@ class RestaurantReviews extends Component {
     this.setState({showReviewForm: false})
   }
 
+  hasReview() {
+    const { currentUser } = this.props;
+    return this.props.restaurant.reviews.filter(review => review.username === currentUser.username).length > 0;
+  }
+
+  getUserReview() {
+    const { currentUser } = this.props;
+    return this.props.restaurant.reviews.filter(review => review.username === currentUser.username)[0];
+  }
+
   render() {
     const reviews = this.props.reviews;
     const { currentUser, showReviewForm } = this.props;
@@ -23,7 +33,7 @@ class RestaurantReviews extends Component {
     return (
       <div>
         {(currentUser != null) ?
-          this.props.restaurant.reviews.filter(review => review.username === currentUser.username).length === 0 &&
+          !this.hasReview() &&
             <div>
               <div className="review-title">Enjoyed this restaurant?</div>
                 <button onClick={() => {
@@ -41,6 +51,9 @@ class RestaurantReviews extends Component {
             {reviews.map((review, idx) => (
               <li key={idx} className="review-body">
                 <RestaurantReview
+                  editReview={() => {
+                      this.setState({showReviewForm: true})
+                    }}
                   deleteReview={this.props.deleteReview}
                   currentUser={currentUser}
                   review={review} />
@@ -55,8 +68,12 @@ class RestaurantReviews extends Component {
             errors={this.props.errors}
             onDismiss={this.onDismiss}
             currentUser={currentUser}
+            body={this.hasReview() ? this.getUserReview().body : ""}
+            rating={this.hasReview() ? this.getUserReview().rating : 0}
+            reviewId={this.hasReview() ? this.getUserReview().id : ""}
+            buttonTitle={this.hasReview() ? "Update your review" : "Submit your review"}
             restaurant={this.props.restaurant}
-            createReview={this.props.createReview}
+            createReview={this.hasReview() ? this.props.updateReview : this.props.createReview }
             showReviewForm={this.showReviewForm}/>
         }
       </div>

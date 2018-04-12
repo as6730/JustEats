@@ -95,7 +95,8 @@ class RestaurantShow extends Component {
               reviews={restaurant.reviews}
               currentUser={this.props.currentUser}
               deleteReview={this.props.deleteReview}
-              createReview={this.props.createReview} />
+              createReview={this.props.createReview} 
+              updateReview={this.props.updateReview} />
           </div>
           <MakeReservation
             restaurant={restaurant}

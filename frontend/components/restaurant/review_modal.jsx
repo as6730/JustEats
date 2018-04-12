@@ -4,8 +4,8 @@ class ReviewModal extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      body: "",
-      rating: 0,
+      body: props.body,
+      rating: props.rating,
     }
   }
 
@@ -21,8 +21,9 @@ class ReviewModal extends PureComponent {
     let review = {
       body: this.state.body,
       rating: this.state.rating,
+      id: this.props.reviewId
     };
-
+    console.log(review);
     this.props.createReview(this.props.restaurant.id, review);
     this.props.onDismiss();
   }
@@ -48,7 +49,7 @@ class ReviewModal extends PureComponent {
             />
           <button onClick={() => this.processAndCreateReview()}
             className="btn-create-review">
-            Submit your review
+            {this.props.buttonTitle}
           </button>
         </div>
       </div>
