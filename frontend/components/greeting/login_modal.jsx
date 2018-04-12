@@ -10,7 +10,6 @@ class LoginModal extends PureComponent {
   }
 
 
-
   render() {
     return (
       <div className="modal-background" onClick={this.props.onDismiss}>

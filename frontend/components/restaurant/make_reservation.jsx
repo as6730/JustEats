@@ -35,7 +35,7 @@ class MakeReservation extends Component {
 
   partySizeOptions() {
     return (
-      <select class="select-size"
+      <select className="select-size"
         onChange={this.onPartySizeChange.bind(this)}
         value={this.state.partySize}>
         {this.partySizeLoop()}
@@ -50,7 +50,7 @@ class MakeReservation extends Component {
   dateOptions() {
     let dateArr =["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
     return (
-      <select class="select-date"
+      <select className="select-date"
         onChange={this.onDateChange.bind(this)}
         value={this.state.date}>
         {dateArr.map((date, idx) => (
@@ -66,7 +66,7 @@ class MakeReservation extends Component {
 
   timeOptions() {
     return (
-      <select class="select-time"
+      <select className="select-time"
         onChange={this.onTimeChange.bind(this)}
         value={this.state.time}>
         <option value="5:30 PM">5:30 PM</option>

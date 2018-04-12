@@ -5,6 +5,7 @@ import IconHalfStar from "react-icons/lib/fa/star-half";
 import IconFlag from "react-icons/lib/fa/flag-o";
 import IconHelpful from "react-icons/lib/fa/caret-square-o-up";
 import IconUser from "react-icons/lib/fa/dot-circle-o";
+import IconDelete from "react-icons/lib/fa/xing-square";
 
 class RestaurantReview extends Component {
   constructor(props) {
@@ -86,11 +87,19 @@ class RestaurantReview extends Component {
           }
           <div className="footer-icon">
             <IconFlag size={20} /> Report
-            </div>
-            <div className="footer-icon">
-              <IconHelpful size={20} /> Helpful
+          </div>
+          <div className="footer-icon">
+            <IconHelpful size={20} /> Helpful
+          </div>
+            {
+              this.props.currentUser.username === this.props.review.username &&
+              <div className="footer-icon" onClick={() => this.props.deleteReview(review.id)}>
+                <IconDelete size={20} /> Delete
               </div>
-            </div>
+            }
+        </div>
+
+
       </div>
     );
   }
