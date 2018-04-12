@@ -1,10 +1,10 @@
 import React, { Component } from "react";
+import FeaturedPhotos from "./featured_photos";
 
 class HomePage extends Component {
   constructor(props) {
     super(props)
   }
-
   partySizeLoop(){
     var options = [];
 
@@ -88,7 +88,15 @@ class HomePage extends Component {
               Reserve a Table
             </button>
           </div>
-      </div>
+        </div>
+        <div className="top-cuisines">
+          <h1 className="top-cuisines-header">
+            Top Cuisines near San Francisco
+          </h1>
+        </div>
+        <FeaturedPhotos />
+        <footer className="footer">
+        </footer>
       </div>
     )
   }

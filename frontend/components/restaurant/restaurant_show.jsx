@@ -90,7 +90,11 @@ class RestaurantShow extends Component {
               cuisines={restaurant.cuisines}
               />
             <PhotoGallery photos={restaurant.photos} />
-            <RestaurantReviews reviews={restaurant.reviews} />
+            <RestaurantReviews
+              restaurant={restaurant}
+              reviews={restaurant.reviews}
+              currentUser={this.props.currentUser}
+              createReview={this.props.createReview} />
           </div>
           <MakeReservation
             restaurant={restaurant}

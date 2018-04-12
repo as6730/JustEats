@@ -5,12 +5,14 @@ import { fetchRestaurant } from "../../actions/restaurant_actions";
 import { createReservation } from "../../actions/reservation_actions";
 
 const mapStateToProps = state => ({
-  restaurant: state.restaurant
+  restaurant: state.restaurant,
+  currentUser: state.session.currentUser
 });
 
 const mapDispatchToProps = dispatch => ({
   fetchRestaurant: id => dispatch(fetchRestaurant(id)),
-  createReservation: (restaurantId, reservation) => dispatch(createReservation(restaurantId, reservation))
+  createReservation: (restaurantId, reservation) => dispatch(createReservation(restaurantId, reservation)),
+  createReview: (restaurantId, review) => dispatch(createReview(restaurantId, review))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(RestaurantShow);

@@ -57,12 +57,12 @@ class Greeting extends Component {
                   className="btn-signup">
                   Sign up
                 </button>
-                  <button onClick={() => {
-                      this.setState({showLogin: true, showSignUp: false})
-                    }}
-                    className="btn-signin">
-                    Sign in
-                  </button>
+                <button onClick={() => {
+                    this.setState({showLogin: true, showSignUp: false})
+                  }}
+                  className="btn-signin">
+                  Sign in
+                </button>
               </nav>
           :
             <div>

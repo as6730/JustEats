@@ -7,8 +7,10 @@ allRestaurants = Nokogiri::HTML(open("https://www.opentable.com/san-francisco-ba
 
 links = []
 
-allRestaurants.xpath('//a[starts-with(@class, "rest-row-name rest-name ")]').each do |el|
-  links << "https://www.opentable.com" + el.attr("href")
+while links.length < 50
+  allRestaurants.xpath('//a[starts-with(@class, "rest-row-name rest-name ")]').each do |el|
+    links << "https://www.opentable.com" + el.attr("href")
+  end
 end
 
 links.each do |link|
@@ -171,7 +173,7 @@ links.each do |link|
   end
 
   # Creates a restaurant
-  uri = URI.parse("http://localhost/api/restaurants")
+  uri = URI.parse("https://justeat.herokuapp.com/api/restaurants")
   http = Net::HTTP.new(uri.host, 3000)
   # http.set_debug_output($stdout)
   # http.use_ssl = true
