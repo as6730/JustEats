@@ -174,7 +174,7 @@ links.each do |link|
 
   # Creates a restaurant
   uri = URI.parse("https://justeat.herokuapp.com/api/restaurants")
-  http = Net::HTTP.new(uri.host, 3000)
+  http = Net::HTTP.new(uri.host, 80)
   # http.set_debug_output($stdout)
   # http.use_ssl = true
   # http.verify_mode = OpenSSL::SSL::VERIFY_NONE
@@ -191,8 +191,8 @@ links.each do |link|
   p 'Restaurant was created: id=' + restaurant_id
 
   # Creates a restaurant's menu
-  uri = URI.parse("http://localhost/api/restaurants/#{restaurant_id}/menus")
-  http = Net::HTTP.new(uri.host, 3000)
+  uri = URI.parse("https://justeat.herokuapp.com/restaurants/#{restaurant_id}/menus")
+  http = Net::HTTP.new(uri.host, 80)
   # http.set_debug_output($stdout)
   # http.use_ssl = true
   # http.verify_mode = OpenSSL::SSL::VERIFY_NONE
@@ -208,8 +208,8 @@ links.each do |link|
 
   # Creates cuisines
   restaurant_cuisines.each do |cuisine|
-    uri = URI.parse("http://localhost/api/restaurants/#{restaurant_id}/cuisines")
-    http = Net::HTTP.new(uri.host, 3000)
+    uri = URI.parse("https://justeat.herokuapp.com/restaurants/#{restaurant_id}/cuisines")
+    http = Net::HTTP.new(uri.host, 80)
     # http.set_debug_output($stdout)
     # http.use_ssl = true
     # http.verify_mode = OpenSSL::SSL::VERIFY_NONE
@@ -228,8 +228,8 @@ links.each do |link|
 
   # Creates payment options
   restaurant_payment_options.each do |payment_option|
-    uri = URI.parse("http://localhost/api/restaurants/#{restaurant_id}/payment_options")
-    http = Net::HTTP.new(uri.host, 3000)
+    uri = URI.parse("https://justeat.herokuapp.com/restaurants/#{restaurant_id}/payment_options")
+    http = Net::HTTP.new(uri.host, 80)
     # http.set_debug_output($stdout)
     # http.use_ssl = true
     # http.verify_mode = OpenSSL::SSL::VERIFY_NONE
@@ -248,8 +248,8 @@ links.each do |link|
 
 
   # Creates locations
-  uri = URI.parse("http://localhost/api/restaurants/#{restaurant_id}/locations")
-  http = Net::HTTP.new(uri.host, 3000)
+  uri = URI.parse("https://justeat.herokuapp.com/restaurants/#{restaurant_id}/locations")
+  http = Net::HTTP.new(uri.host, 80)
   # http.set_debug_output($stdout)
   # http.use_ssl = true
   # http.verify_mode = OpenSSL::SSL::VERIFY_NONE
@@ -269,8 +269,8 @@ links.each do |link|
 
   # Creates photos
   restaurant_photos.each do |photo|
-    uri = URI.parse("http://localhost/api/restaurants/#{restaurant_id}/photos")
-    http = Net::HTTP.new(uri.host, 3000)
+    uri = URI.parse("https://justeat.herokuapp.com/restaurants/#{restaurant_id}/photos")
+    http = Net::HTTP.new(uri.host, 80)
     # http.set_debug_output($stdout)
     # http.use_ssl = true
     # http.verify_mode = OpenSSL::SSL::VERIFY_NONE
@@ -289,8 +289,8 @@ links.each do |link|
 
   # Creates tags
   restaurant_tags.each do |tag|
-    uri = URI.parse("http://localhost/api/restaurants/#{restaurant_id}/tags")
-    http = Net::HTTP.new(uri.host, 3000)
+    uri = URI.parse("https://justeat.herokuapp.com/restaurants/#{restaurant_id}/tags")
+    http = Net::HTTP.new(uri.host, 80)
     # http.set_debug_output($stdout)
     # http.use_ssl = true
     # http.verify_mode = OpenSSL::SSL::VERIFY_NONE
@@ -309,8 +309,8 @@ links.each do |link|
 
   # Creates reviews
   restaurant_reviews.each do |review|
-    uri = URI.parse("http://localhost/api/restaurants/#{restaurant_id}/reviews")
-    http = Net::HTTP.new(uri.host, 3000)
+    uri = URI.parse("https://justeat.herokuapp.com/restaurants/#{restaurant_id}/reviews")
+    http = Net::HTTP.new(uri.host, 80)
     # http.set_debug_output($stdout)
     # http.use_ssl = true
     # http.verify_mode = OpenSSL::SSL::VERIFY_NONE
