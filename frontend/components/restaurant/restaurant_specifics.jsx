@@ -57,7 +57,7 @@ class RestaurantSpecifics extends Component {
       specifics.push([<IconWebsite size={16}/>,"Website Link", restaurant.websiteLink]);
     }
 
-    if (restaurant.hours != null) {
+    if (restaurant.hours != null && restaurant.hours.length < 200) {
       specifics.push([<IconHours size={16}/>, "Hours of operation", restaurant.hours]);
     }
 

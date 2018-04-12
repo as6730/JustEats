@@ -9,9 +9,12 @@ class Api::ReviewsController < ApplicationController
     @review = Review.new
   end
 
+# need to remove @review.username = current_user.username when running
+# the scrapper or it will prohibit the scrapper from running
+
   def create
     @review = Review.new(JSON.parse(request.body.read))
-    # @review.username = current_user.username
+    @review.username = current_user.username
     @review.restaurant_id = params[:restaurant_id]
 
     if @review.save

@@ -118,6 +118,15 @@ class MakeReservation extends Component {
     this.props.createReservation(this.props.restaurant.id, reservation);
   }
 
+  createFavorite() {
+    let favorited = {
+      user_id: this.props.currentUser.id,
+      restaurant_id: this.props.restaurant.id
+    };
+
+    this.props.createFavorite(favorited)
+  }
+
   render() {
     return (
       <div>
@@ -149,6 +158,7 @@ class MakeReservation extends Component {
           </div>
       </div>
       <button
+        onClick={() => this.createFavorite() }
         className="btn-favorite">
         {<IconHeart size={18}/>}  Save to Favorites
       </button>

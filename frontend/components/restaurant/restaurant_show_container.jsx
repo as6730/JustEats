@@ -16,7 +16,9 @@ const mapDispatchToProps = dispatch => ({
   createReservation: (restaurantId, reservation) => dispatch(createReservation(restaurantId, reservation)),
   createReview: (restaurantId, review) => dispatch(createReview(restaurantId, review)),
   updateReview: (restaurantId, review) => dispatch(updateReview(restaurantId, review)),
-  deleteReview: (reviewId) => dispatch(deleteReview(reviewId))
+  deleteReview: (reviewId) => dispatch(deleteReview(reviewId)),
+  createFavorite: (userId, restaurantId) => dispatch(createFavorite(userId, restaurantId)),
+  deleteFavorite: (userId, restaurantId) => dispatch(deleteFavorite(userId, restaurantId))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(RestaurantShow);

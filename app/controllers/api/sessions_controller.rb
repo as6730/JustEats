@@ -1,8 +1,8 @@
 class Api::SessionsController < ApplicationController
-  def show
-    @user = current_user
-    render json: @user
-  end
+  # def show
+  #   @user = current_user
+  #   render json: @user
+  # end
 
   def create
     @user = User.find_by_credentials(

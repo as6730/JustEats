@@ -9,7 +9,17 @@ import {
 } from '../actions/review_actions';
 import merge from "lodash/merge";
 
-const RestaurantReducer = (state = {}, action) => {
+const initialState = {
+  "reviews": [],
+  "photos": [],
+  "priceRange": "",
+  "cuisines": [],
+  "tags": [],
+  "paymentOptions": [],
+  "location": {}
+}
+
+const RestaurantReducer = (state = initialState, action) => {
   // alert(JSON.stringify(action));
   Object.freeze(state);
   let newState = merge({}, state);
@@ -18,7 +28,6 @@ const RestaurantReducer = (state = {}, action) => {
       return action.payload.restaurants;
     case RECEIVE_RESTAURANT:
       return action.payload.restaurant;
-    // return merge({}, oldState, { [action.post.id]: action.post });
     case RECEIVE_REVIEW:
       newState.reviews = newState.reviews.filter(review => review.id !== action.review.id);
       newState.reviews.unshift(action.review);

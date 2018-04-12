@@ -23,8 +23,8 @@ class User < ApplicationRecord
   after_initialize :ensure_session_token
 
   has_many :reservations
-  has_many :favorites
-  has_many :restaurants, through: :favorites
+  has_many :restaurant_favorites
+  has_many :restaurants, through: :restaurant_favorites
 
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)

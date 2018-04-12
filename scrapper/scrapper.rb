@@ -183,7 +183,7 @@ links.each do |link|
   request.body = restaurant.to_json
   response = http.request(request)
   unless response.kind_of? Net::HTTPSuccess
-    p "failed"
+    p "failed 1"
     next
   end
   responseObj = JSON.parse(response.body)
@@ -191,24 +191,24 @@ links.each do |link|
   p 'Restaurant was created: id=' + restaurant_id
 
   # Creates a restaurant's menu
-  uri = URI.parse("https://justeat.herokuapp.com/restaurants/#{restaurant_id}/menus")
-  http = Net::HTTP.new(uri.host, 80)
-  # http.set_debug_output($stdout)
-  # http.use_ssl = true
-  # http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-  request = Net::HTTP::Post.new(uri.request_uri)
-  request.add_field('Content-Type', 'application/json')
-  request.body = restaurant_menu.to_json
-  response = http.request(request)
-  unless response.kind_of? Net::HTTPSuccess
-    p "failed"
-    next
-  end
-  responseObj = JSON.parse(response.body)
+  # uri = URI.parse("https://justeat.herokuapp.com/api/restaurants/#{restaurant_id}/menus")
+  # http = Net::HTTP.new(uri.host, 80)
+  # # http.set_debug_output($stdout)
+  # # http.use_ssl = true
+  # # http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+  # request = Net::HTTP::Post.new(uri.request_uri)
+  # request.add_field('Content-Type', 'application/json')
+  # request.body = restaurant_menu.to_json
+  # response = http.request(request)
+  # unless response.kind_of? Net::HTTPSuccess
+  #   p "failed 2"
+  #   next
+  # end
+  # responseObj = JSON.parse(response.body)
 
   # Creates cuisines
   restaurant_cuisines.each do |cuisine|
-    uri = URI.parse("https://justeat.herokuapp.com/restaurants/#{restaurant_id}/cuisines")
+    uri = URI.parse("https://justeat.herokuapp.com/api/restaurants/#{restaurant_id}/cuisines")
     http = Net::HTTP.new(uri.host, 80)
     # http.set_debug_output($stdout)
     # http.use_ssl = true
@@ -220,7 +220,7 @@ links.each do |link|
     request.body = requestCuisine.to_json
     response = http.request(request)
     unless response.kind_of? Net::HTTPSuccess
-      p "failed"
+      p "failed 3"
       next
     end
     responseObj = JSON.parse(response.body)
@@ -228,7 +228,7 @@ links.each do |link|
 
   # Creates payment options
   restaurant_payment_options.each do |payment_option|
-    uri = URI.parse("https://justeat.herokuapp.com/restaurants/#{restaurant_id}/payment_options")
+    uri = URI.parse("https://justeat.herokuapp.com/api/restaurants/#{restaurant_id}/payment_options")
     http = Net::HTTP.new(uri.host, 80)
     # http.set_debug_output($stdout)
     # http.use_ssl = true
@@ -240,7 +240,7 @@ links.each do |link|
     request.body = requestPaymentOption.to_json
     response = http.request(request)
     unless response.kind_of? Net::HTTPSuccess
-      p "failed"
+      p "failed 4"
       next
     end
     responseObj = JSON.parse(response.body)
@@ -248,7 +248,7 @@ links.each do |link|
 
 
   # Creates locations
-  uri = URI.parse("https://justeat.herokuapp.com/restaurants/#{restaurant_id}/locations")
+  uri = URI.parse("https://justeat.herokuapp.com/api/restaurants/#{restaurant_id}/locations")
   http = Net::HTTP.new(uri.host, 80)
   # http.set_debug_output($stdout)
   # http.use_ssl = true
@@ -262,14 +262,14 @@ links.each do |link|
   request.body = restaurant_location.to_json
   response = http.request(request)
   unless response.kind_of? Net::HTTPSuccess
-    p "failed"
+    p "failed 5"
     next
   end
   responseObj = JSON.parse(response.body)
 
   # Creates photos
   restaurant_photos.each do |photo|
-    uri = URI.parse("https://justeat.herokuapp.com/restaurants/#{restaurant_id}/photos")
+    uri = URI.parse("https://justeat.herokuapp.com/api/restaurants/#{restaurant_id}/photos")
     http = Net::HTTP.new(uri.host, 80)
     # http.set_debug_output($stdout)
     # http.use_ssl = true
@@ -281,7 +281,7 @@ links.each do |link|
     request.body = requestPhoto.to_json
     response = http.request(request)
     unless response.kind_of? Net::HTTPSuccess
-      p "failed"
+      p "failed 6"
       next
     end
     responseObj = JSON.parse(response.body)
@@ -289,7 +289,7 @@ links.each do |link|
 
   # Creates tags
   restaurant_tags.each do |tag|
-    uri = URI.parse("https://justeat.herokuapp.com/restaurants/#{restaurant_id}/tags")
+    uri = URI.parse("https://justeat.herokuapp.com/api/restaurants/#{restaurant_id}/tags")
     http = Net::HTTP.new(uri.host, 80)
     # http.set_debug_output($stdout)
     # http.use_ssl = true
@@ -301,7 +301,7 @@ links.each do |link|
     request.body = requestTag.to_json
     response = http.request(request)
     unless response.kind_of? Net::HTTPSuccess
-      p "failed"
+      p "failed 7"
       next
     end
     responseObj = JSON.parse(response.body)
@@ -309,7 +309,7 @@ links.each do |link|
 
   # Creates reviews
   restaurant_reviews.each do |review|
-    uri = URI.parse("https://justeat.herokuapp.com/restaurants/#{restaurant_id}/reviews")
+    uri = URI.parse("https://justeat.herokuapp.com/api/restaurants/#{restaurant_id}/reviews")
     http = Net::HTTP.new(uri.host, 80)
     # http.set_debug_output($stdout)
     # http.use_ssl = true
@@ -319,7 +319,7 @@ links.each do |link|
     request.body = review.to_json
     response = http.request(request)
     unless response.kind_of? Net::HTTPSuccess
-      p "failed"
+      p "failed 8"
       next
     end
     responseObj = JSON.parse(response.body)

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import RestaurantReview from "./restaurant_review";
 import ReviewModal from "./review_modal";
+import IconEdit from "react-icons/lib/fa/pencil-square";
 
 class RestaurantReviews extends Component {
   constructor(props) {
@@ -35,13 +36,14 @@ class RestaurantReviews extends Component {
         {(currentUser != null) ?
           !this.hasReview() &&
             <div>
-              <div className="review-title">Enjoyed this restaurant?</div>
+              <div className="review-form-question">Enjoyed this restaurant?
                 <button onClick={() => {
                     this.setState({showReviewForm: true})
                   }}
-                  className="btn-review">
-                  Write a Review
+                  className="btn-write-review">
+                  <IconEdit size={22} /> Write a Review
                 </button>
+              </div>
             </div>
         :
           <div>If you would like to leave a review, please sign in.</div>

@@ -19,9 +19,9 @@ class Greeting extends Component {
     this.onDismiss = this.onDismiss.bind(this);
   }
 
-  componentDidMount() {
-    this.props.checkSession();
-  }
+  // componentDidMount() {
+  //   this.props.checkSession();
+  // }
 
   onDismiss() {
     this.setState({showLogin: false, showSignUp: false})

@@ -6,6 +6,7 @@ import IconFlag from "react-icons/lib/fa/flag-o";
 import IconHelpful from "react-icons/lib/fa/caret-square-o-up";
 import IconUser from "react-icons/lib/fa/dot-circle-o";
 import IconDelete from "react-icons/lib/fa/xing-square";
+import IconEdit from "react-icons/lib/fa/pencil-square";
 
 class RestaurantReview extends Component {
   constructor(props) {
@@ -100,7 +101,7 @@ class RestaurantReview extends Component {
             {
               (this.props.currentUser.username === this.props.review.username) &&
               <div className="footer-icon" onClick={this.props.editReview}>
-                <IconDelete size={20} /> Edit
+                <IconEdit size={20} /> Edit
               </div>
             }
         </div>
