@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import IconChart from "react-icons/lib/io/arrow-graph-up-right";
 import IconHeart from "react-icons/lib/fa/heart-o";
+import IconFullHeart from "react-icons/lib/fa/heart";
 
 class MakeReservation extends Component {
   constructor(props) {
@@ -104,7 +105,6 @@ class MakeReservation extends Component {
     let distance = (this.state.date + 7 - currentDay) % 7;
 
     date.setDate(date.getDate() + distance);
-    console.log(date);
     return date;
   }
 
@@ -118,13 +118,8 @@ class MakeReservation extends Component {
     this.props.createReservation(this.props.restaurant.id, reservation);
   }
 
-  createFavorite() {
-    let favorited = {
-      user_id: this.props.currentUser.id,
-      restaurant_id: this.props.restaurant.id
-    };
-
-    this.props.createFavorite(favorited)
+  isRestaurantInFavorites() {
+    return Object.keys(this.props.favorites).filter(restaurantId => parseInt(restaurantId) === this.props.restaurant.id).length > 0
   }
 
   render() {
@@ -157,11 +152,19 @@ class MakeReservation extends Component {
             {<IconChart size={20}/>} {this.numBookings()}
           </div>
       </div>
-      <button
-        onClick={() => this.createFavorite() }
-        className="btn-favorite">
-        {<IconHeart size={18}/>}  Save to Favorites
-      </button>
+      {this.isRestaurantInFavorites() ?
+        <button
+          onClick={() => this.props.removeFavorite(this.props.restaurant.id) }
+          className="btn-favorite">
+          {<IconFullHeart className="favorite-icon" size={18} color={"#da3743"}/>}  Remove from Favorites
+        </button>
+      :
+        <button
+          onClick={() => this.props.addFavorite(this.props.restaurant.id) }
+          className="btn-favorite">
+          {<IconHeart className="favorite-icon" size={18}/>}  Save to Favorites
+        </button>
+      }
     </div>
     )
   }

@@ -23,7 +23,7 @@ class ReviewModal extends PureComponent {
       rating: this.state.rating,
       id: this.props.reviewId
     };
-    console.log(review);
+
     this.props.createReview(this.props.restaurant.id, review);
     this.props.onDismiss();
   }

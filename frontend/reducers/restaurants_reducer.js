@@ -10,7 +10,6 @@ import {
 import merge from "lodash/merge";
 
 const RestaurantsReducer = (state = {}, action) => {
-  console.log(action.payload)
   Object.freeze(state);
   let newState = merge({}, state);
   switch (action.type) {

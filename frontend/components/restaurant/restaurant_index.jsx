@@ -11,7 +11,6 @@ class RestaurantIndex extends Component {
   }
 
   render() {
-    console.log(this.props);
     const restaurants = this.props.restaurants.map(restaurant => {
       return (
         <RestaurantIndexItem

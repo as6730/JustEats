@@ -24,8 +24,8 @@ export const createReservation = (restaurantId, reservation) => (
 
 export const updateReservation = (restaurantId, reservation) => (
   $.ajax({
-    url: `/api/restaurants/${restaurantId}/reservations/${reservation.id}`,
     method: 'PATCH',
+    url: `/api/restaurants/${restaurantId}/reservations/${reservation.id}`,
     data: JSON.stringify(reservation),
     contentType: "application/json; charset=utf-8",
     dataType: "json"
@@ -34,7 +34,7 @@ export const updateReservation = (restaurantId, reservation) => (
 
 export const deleteReservation = id => (
   $.ajax({
+    method: 'DELETE',
     url: `api/restaurants/${restaurantId}/reservations/${id}`,
-    method: 'DELETE'
   })
 );

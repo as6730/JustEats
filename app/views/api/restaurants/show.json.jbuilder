@@ -47,8 +47,4 @@ json.restaurant do
   json.tags @restaurant.tags.each do |tag|
     json.partial! 'api/tags/tag', tag: tag
   end
-
-  json.favorites  @restaurant.favorites.each do |favorite|
-    json.partial! 'api/favorites/favorite', favorite: favorite
-  end
 end

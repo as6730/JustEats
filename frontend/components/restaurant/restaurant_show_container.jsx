@@ -4,13 +4,15 @@ import { connect } from "react-redux";
 import { fetchRestaurant } from "../../actions/restaurant_actions";
 import { createReservation } from "../../actions/reservation_actions";
 import { createReview, updateReview, deleteReview } from "../../actions/review_actions";
+import { getUserFavorites, addFavorite, removeFavorite } from "../../actions/favorite_actions";
 
 // add own props
 const mapStateToProps = (state, ownProps) => ({
   restaurant: state.restaurants[ownProps.match.params.restaurantId],
   currentUser: state.session.currentUser,
   errors: state.errors.session,
-  reviews: state.reviews
+  reviews: state.reviews,
+  favorites: state.favorites,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -19,8 +21,9 @@ const mapDispatchToProps = dispatch => ({
   createReview: (restaurantId, review) => dispatch(createReview(restaurantId, review)),
   updateReview: (restaurantId, review) => dispatch(updateReview(restaurantId, review)),
   deleteReview: (reviewId) => dispatch(deleteReview(reviewId)),
-  createFavorite: (userId, restaurantId) => dispatch(createFavorite(userId, restaurantId)),
-  deleteFavorite: (userId, restaurantId) => dispatch(deleteFavorite(userId, restaurantId))
+  getUserFavorites: () => dispatch(getUserFavorites()),
+  addFavorite: (restaurantId) => dispatch(addFavorite(restaurantId)),
+  removeFavorite: (restaurantId) => dispatch(removeFavorite(restaurantId))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(RestaurantShow);

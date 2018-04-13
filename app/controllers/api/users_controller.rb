@@ -16,12 +16,20 @@ class Api::UsersController < ApplicationController
   end
 
   def show
-    if params.include?(:id)
-      @user = User.find(params[:id])
-      render :show
-    else
-      render json: @user.errors.full_messages, status: 401
+    @user = User.where(:id=>current_user.id).first
+    render :show
+  end
+
+  def get_favorites
+    favorites = RestaurantFavorite.where(:user_id=>current_user.id)
+
+    favorite_restaurants = {}
+    favorites.each do |favorite|
+      restaurant = Restaurant.where(:id=>favorite.restaurant_id).first
+      favorite_restaurants[restaurant.id] = restaurant unless restaurant.nil?
     end
+
+    render json: favorite_restaurants
   end
 
   def add_favorite
@@ -33,6 +41,8 @@ class Api::UsersController < ApplicationController
       @favorite.user_id = current_user.id
       @favorite.save!
     end
+
+    render json: Restaurant.where(:id=>@favorite.restaurant_id).first
   end
 
   def remove_favorite
@@ -41,6 +51,8 @@ class Api::UsersController < ApplicationController
     if @favorite
       @favorite.destroy!
     end
+
+    render json: @favorite.restaurant_id
   end
 
   private
