@@ -3,13 +3,13 @@ require 'open-uri'
 require 'json'
 
 # links = ["https://www.opentable.com/r/seven-hills-san-francisco?page=1", "https://www.opentable.com/r/the-stinking-rose-san-francisco?page=1", "https://www.opentable.com/blue-hill?page=1", "https://www.opentable.com/harold-black?page=1", "https://www.opentable.com/seasons-restaurant-four-seasons-washington-dc?page=1", "https://www.opentable.com/r/tarbells-phoenix?page=1"]
-allRestaurants = Nokogiri::HTML(open("https://www.opentable.com/new-york-city-restaurants"))
+allRestaurants = Nokogiri::HTML(open("https://www.opentable.com/miami-restaurant-listings"))
 
 links = []
 
 allRestaurants.xpath('//a[starts-with(@class, "rest-row-name rest-name ")]').each do |el|
   links << "https://www.opentable.com" + el.attr("href")
-  break if links.length >= 5
+  break if links.length >= 4
 end
 
 links.each do |link|
