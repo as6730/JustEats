@@ -57,7 +57,7 @@ class RestaurantReview extends Component {
     const review = this.props.review;
     const { expanded } = this.state;
     const toggledClass = expanded ? 'expanded' : 'collapsed';
-
+    
     return (
       <div>
         <div className="review-details">

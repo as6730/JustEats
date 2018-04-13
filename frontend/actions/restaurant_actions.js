@@ -5,7 +5,7 @@ export const RECEIVE_RESTAURANT = "RECEIVE_RESTAURANT";
 export const REMOVE_RESTAURANT = "REMOVE_RESTAURANT";
 
 export const fetchRestaurants = () => dispatch =>
-  PostApiUtil.fetchRestaurants().then(restaurants =>
+  APIUtil.fetchRestaurants().then(restaurants =>
     dispatch(receiveAllRestaurants(restaurants))
   );
 
@@ -15,23 +15,23 @@ export const fetchRestaurant = id => dispatch =>
   );
 
 export const createRestaurant = restaurant => dispatch =>
-  PostApiUtil.createRestaurant(restaurant).then(restaurant =>
+  APIUtil.createRestaurant(restaurant).then(restaurant =>
     dispatch(receiveRestaurant(restaurant))
   );
 
 export const updateRestaurant = restaurant => dispatch =>
-  PostApiUtil.updateRestaurant(restaurant).then(restaurant =>
+  APIUtil.updateRestaurant(restaurant).then(restaurant =>
     dispatch(receiveRestaurant(restaurant))
   );
 
 export const deleteRestaurant = restaurantId => dispatch =>
-  PostApiUtil.deleteRestaurant(restaurantId).then(restaurant =>
+  APIUtil.deleteRestaurant(restaurantId).then(restaurant =>
     dispatch(removeRestaurant(restaurantId))
   );
-
+//payload was missing
 const receiveAllRestaurants = restaurants => ({
   type: RECEIVE_ALL_RESTAURANTS,
-  restaurants
+  payload: restaurants 
 });
 
 const receiveRestaurant = restaurant => ({

@@ -20,6 +20,7 @@ class RestaurantShow extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    if (!this.props.restaurant) return
     if (this.props.restaurant.id != nextProps.match.params.restaurantId) {
       this.props.fetchRestaurant(nextProps.match.params.restaurantId);
     }
@@ -51,7 +52,7 @@ class RestaurantShow extends Component {
     const restaurant = this.props.restaurant;
     const { expanded } = this.state;
     const toggledClass = expanded ? 'expanded' : 'collapsed';
-
+    if (!this.props.restaurant) return <div/>
     return (
       <div className="restaurant-container">
         <div className="banner-image-container">

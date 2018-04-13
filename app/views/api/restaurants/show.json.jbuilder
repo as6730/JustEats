@@ -39,7 +39,7 @@ json.restaurant do
   json.cuisines @restaurant.cuisines.each do |cuisine|
     json.partial! 'api/cuisines/cuisine', cuisine: cuisine
   end
-  
+
   json.payment_options @restaurant.payment_options.each do |payment_option|
     json.partial! 'api/payment_options/payment_option', payment_option: payment_option
   end

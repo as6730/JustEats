@@ -16,5 +16,11 @@
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   position: absolute;
   transform: translate(-50%, -50%);
-  text-shadow: -0.2px 0 black, 0 0.2px black, 0.2px 0 black, 0 -0.2px black;
+  // text-shadow: -0.2px 0 black, 0 0.2px black, 0.2px 0 black, 0 -0.2px black;
+}
+
+.slick-next:before, .slick-prev:before {
+  font-size: 20px;
+  line-height: 1;
+  opacity: .75;
 }

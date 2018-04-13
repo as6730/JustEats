@@ -30,7 +30,7 @@ class RestaurantReviews extends Component {
   render() {
     const reviews = this.props.reviews;
     const { currentUser, showReviewForm } = this.props;
-
+    
     return (
       <div>
         {(currentUser != null) ?
