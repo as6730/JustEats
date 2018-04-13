@@ -1,0 +1,99 @@
+.account-user {
+  height: 84px;
+  width: 100%;
+  font-family: $lato;
+  font-size: 28px;
+  margin-left: 92px;
+  margin-top: 30px;
+}
+
+.account-reservations {
+  width: 847px;
+}
+
+.account-info-statement {
+  font-family: $lato;
+  font-size: 14px;
+  margin-top: 10px;
+  color: #666;
+}
+
+.reservation-item-info {
+  height: 300px;
+}
+
+.res-info-title {
+  font-family: $lato;
+  font-size: 12px;
+  margin: 10px;
+}
+
+.res-info-body {
+  font-family: $lato;
+  font-size: 12px;
+  margin: 10px;
+  color: #666;
+}
+
+.account-wrapper {
+  height: 100%;
+  width: 95%;
+  display: flex;
+  margin-left: 15%;
+  margin-top: 20px;
+}
+
+.favorite-side-column {
+  height: 1014px;
+  width: 300px;
+  display: flex;
+  justify-content: flex-start;
+  margin-right: 30px;
+}
+
+.account-reservation-wrapper {
+  height: 670px;
+  display: flex;
+  flex-direction: column;
+}
+
+.favorited-header {
+  font-family: $lato;
+  font-size: 15px;
+}
+
+.res-header {
+  font-family: $lato;
+  font-size: 16px;
+}
+
+.reservation-item {
+  height: 180px;
+  width: 760px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  font-family: $lato;
+  font-size: 14px;
+  margin-top: 15px;
+}
+
+.reservation-img {
+  height: 80px;
+  width: 80px;
+}
+
+.favorites {
+  font-family: $lato;
+  font-size: 12px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 20px;
+}
+
+.reservation-points {
+  text-align: center;
+  border: 1px solid #fdb245;
+  background-color: #fdb245;
+  border-radius: 14px;
+  width: 4rem;
+  font-size: 12px;
+  margin-top: 10px;
+}

@@ -3,10 +3,6 @@ import {
   RECEIVE_RESTAURANT,
   REMOVE_RESTAURANT
 } from "../actions/restaurant_actions";
-import {
-  RECEIVE_REVIEW,
-  REMOVE_REVIEW,
-} from '../actions/review_actions';
 import merge from "lodash/merge";
 
 const RestaurantsReducer = (state = {}, action) => {

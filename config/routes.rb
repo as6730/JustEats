@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     resources :payment_options, only: [:update, :destroy]
 
     resources :restaurants, only: [:create, :update, :index, :show, :destroy] do
-      resources :reservations, only: [:create, :destroy]
+      resources :reservations, only: [:create]
       resources :reviews, only: [:index, :create]
       resources :tags, only: [:create]
       resources :photos, only: [:create]

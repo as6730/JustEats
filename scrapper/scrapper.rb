@@ -7,10 +7,9 @@ allRestaurants = Nokogiri::HTML(open("https://www.opentable.com/san-francisco-ba
 
 links = []
 
-while links.length < 50
-  allRestaurants.xpath('//a[starts-with(@class, "rest-row-name rest-name ")]').each do |el|
-    links << "https://www.opentable.com" + el.attr("href")
-  end
+allRestaurants.xpath('//a[starts-with(@class, "rest-row-name rest-name ")]').each do |el|
+  links << "https://www.opentable.com" + el.attr("href")
+  break if links.length >= 5
 end
 
 links.each do |link|
@@ -308,7 +307,9 @@ links.each do |link|
   end
 
   # Creates reviews
+  count = 0
   restaurant_reviews.each do |review|
+    break if count > 10
     uri = URI.parse("https://justeat.herokuapp.com/api/restaurants/#{restaurant_id}/reviews")
     http = Net::HTTP.new(uri.host, 80)
     # http.set_debug_output($stdout)
@@ -323,5 +324,6 @@ links.each do |link|
       next
     end
     responseObj = JSON.parse(response.body)
+    count += 1
   end
 end

@@ -2,7 +2,7 @@ import React from "react";
 import RestaurantShow from "./restaurant_show";
 import { connect } from "react-redux";
 import { fetchRestaurant } from "../../actions/restaurant_actions";
-import { createReservation } from "../../actions/reservation_actions";
+import { createReservation, deleteReservation } from "../../actions/reservation_actions";
 import { createReview, updateReview, deleteReview } from "../../actions/review_actions";
 import { getUserFavorites, addFavorite, removeFavorite } from "../../actions/favorite_actions";
 
@@ -18,6 +18,7 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = dispatch => ({
   fetchRestaurant: id => dispatch(fetchRestaurant(id)),
   createReservation: (restaurantId, reservation) => dispatch(createReservation(restaurantId, reservation)),
+  deleteReservation: (restaurantId) => dispatch(deleteReservation(restaurantId)),
   createReview: (restaurantId, review) => dispatch(createReview(restaurantId, review)),
   updateReview: (restaurantId, review) => dispatch(updateReview(restaurantId, review)),
   deleteReview: (reviewId) => dispatch(deleteReview(reviewId)),

@@ -107,6 +107,7 @@ class RestaurantShow extends Component {
             favorites={this.props.favorites}
             removeFavorite={this.props.removeFavorite}
             createReservation={this.props.createReservation}
+            deleteReservation={this.props.deleteReservation}
           />
         </div>
       </div>

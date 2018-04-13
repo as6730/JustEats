@@ -66,7 +66,9 @@ class Greeting extends Component {
               </nav>
           :
             <div>
-              Hi, {currentUser.firstname}
+              <Link to="/myaccount">
+                Hi, {currentUser.firstname}
+              </Link>
 
               <button onClick={() => {
                   this.props.logout()

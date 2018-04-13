@@ -169,4 +169,21 @@ class MakeReservation extends Component {
     )
   }
 }
+
+
+// change this for the reservation when user has a table
+
+// {this.isRestaurantInFavorites() ?
+//   <button
+//     onClick={() => this.props.removeFavorite(this.props.restaurant.id) }
+//     className="btn-favorite">
+//     {<IconFullHeart className="favorite-icon" size={18} color={"#da3743"}/>}  Remove from Favorites
+//   </button>
+// :
+//   <button
+//     onClick={() => this.props.addFavorite(this.props.restaurant.id) }
+//     className="btn-favorite">
+//     {<IconHeart className="favorite-icon" size={18}/>}  Save to Favorites
+//   </button>
+// }
 export default MakeReservation;

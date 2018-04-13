@@ -17,7 +17,6 @@ const ReviewReducer = (state = {}, action) => {
       delete newState[action.reviewId];
       return newState;
     case RECEIVE_RESTAURANT:
-      ;
       return action.payload.restaurant.reviews;
     default:
       return state;

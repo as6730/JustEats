@@ -24,6 +24,18 @@ json.restaurant do
 
   # load any extras into controller for faster querying
 
+  # @restaurant.reviews.each do |review|
+  #   json.set! review.id do
+  #     # json.partial! 'api/reviews/review', review: review
+  #     json.reviewId review.id
+  #     json.username review.username
+  #     json.body review.body
+  #     json.rating review.rating
+  #     json.date_created review.date_created
+  #
+  #   end
+  # end
+  
   json.reviews @restaurant.reviews.each do |review|
     json.partial! 'api/reviews/review', review: review
   end
