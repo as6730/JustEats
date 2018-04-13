@@ -11,8 +11,6 @@ class RestaurantIndex extends Component {
   }
 
   render() {
-
-
     console.log(this.props);
     const restaurants = this.props.restaurants.map(restaurant => {
       return (
@@ -25,13 +23,24 @@ class RestaurantIndex extends Component {
 
     return (
       <div>
-        <ul>
-          {restaurants}
-        </ul>
+        <div className="index-search">
+          searchbar
+        </div>
+        <div className="index-wrapper">
+          <div className="index-side-column">
+            <img className="visual-map-image" src="http://media.otstatic.com/search-result-node/images/mapImage@2x.e764d473.png"/>
+          </div>
+          <div className="search-results-container">
+            <ul>
+              {restaurants}
+            </ul>
+          </div>
+        </div>
       </div>
     );
   }
 }
 
+// <img className="visual-map-text" src="http://media.otstatic.com/search-result-node/images/compressed/pinIcon.dbf100dd.svg" />
 
 export default RestaurantIndex;

@@ -1,5 +1,10 @@
 .home-container {
-  background: #f7f7f7;
+    background: #f7f7f7;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    width: 100%;
 }
 
 .home-banner-image-container {
@@ -8,7 +13,7 @@
   height: 368px;
   width: 100%;
   background-color: grey;
-  border-bottom: 1px solid rgba(0,0,0,.08);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .home-banner-image {
@@ -21,21 +26,12 @@
 }
 
 .search-bar-container {
-  position: relative;
-  width: 1049px;
-  height: 182px;
-  background-color: white;
-  margin-top: -105px;
-  margin-left: 15%;
-  border-radius: 5px 5px 0px 0px;
   display: flex;
-  flex-direction: column;
+  margin: -105px auto auto auto;
   box-shadow: 0 0 5px #ccc;
-
 }
 
 .search-bar-header {
-  padding: 15px;
   width: 1000px;
   height: 40px;
 }
@@ -63,7 +59,6 @@
 
 .content-body {
   height: 78px;
-  width: 1049px;
   display: flex;
   font-family: $lato;
   font-size: 14px;
@@ -74,7 +69,7 @@
   height: 363px;
   width: 1049px;
   box-shadow: 0 0 5px #ccc;
-  margin-left: 15%;
+  margin: auto;
   margin-top: 40px;
   background: white;
 }
@@ -84,8 +79,6 @@
   width: 1000px;
   font-family: $lato;
   color: #333;
-  padding-top: 5px;
-  margin-left: 5px;
   font-size: 22px;
   margin-left: 2%;
   border-bottom: 1px solid #e1e1e1;
@@ -96,7 +89,7 @@
   height: 600px;
   width: 1049px;
   box-shadow: 0 0 5px #ccc;
-  margin-left: 15%;
+  margin: auto;
   margin-top: 40px;
   background: white;
 }
@@ -104,10 +97,8 @@
 .featured-areas-header {
   height: 48px;
   width: 1000px;
-  font-family: $lato;
+  font-family: "Lato", sans-serif;
   color: #333;
-  padding-top: 5px;
-  margin-left: 5px;
   font-size: 22px;
   margin-left: 2%;
   border-bottom: 1px solid #e1e1e1;

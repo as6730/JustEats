@@ -87,7 +87,7 @@ class RestaurantSpecifics extends Component {
       specifics.push([<IconCuisine size={16} />, "Cuisines", options]);
     }
 
-    if (restaurant.paymentOptions.length !== 0) {
+    if (restaurant.paymentOptions != undefined && restaurant.paymentOptions.length !== 0) {
       let options = "";
 
       restaurant.paymentOptions.map((payment, idx) => {

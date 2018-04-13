@@ -5,12 +5,12 @@ import { fetchRestaurant } from "../../actions/restaurant_actions";
 import { createReservation } from "../../actions/reservation_actions";
 import { createReview, updateReview, deleteReview } from "../../actions/review_actions";
 
-//add own props
+// add own props
 const mapStateToProps = (state, ownProps) => ({
   restaurant: state.restaurants[ownProps.match.params.restaurantId],
   currentUser: state.session.currentUser,
   errors: state.errors.session,
-  reviews: state.entities.reviews
+  reviews: state.reviews
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -26,4 +26,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(mapStateToProps, mapDispatchToProps)(RestaurantShow);
 
 
-//find id through match params and take that restaurant out of state
+// find id through match params and take that restaurant out of state

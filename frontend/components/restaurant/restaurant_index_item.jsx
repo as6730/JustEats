@@ -1,9 +1,12 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import IconChart from "react-icons/lib/io/arrow-graph-up-right";
 
 class RestaurantIndexItem extends Component {
   constructor(props) {
     super(props);
   }
+
   // getRestaurantStars(rating) {
   //   let stars = [];
   //   let ratingNum = Math.round(rating * 10) / 10;
@@ -52,16 +55,39 @@ class RestaurantIndexItem extends Component {
     }
   }
 
+  getBackgroundImage() {
+    const img = this.props.restaurant.background_image;
+    const photos = this.props.restaurant.photos;
+
+    if (img != null) {
+      return img;
+    } else if (photos.length === 0) {
+      return "";
+    }
+
+    return photos[0].url;
+  }
+
+  numBookings() {
+    let bookings = Math.floor(Math.random() * 50) + 5;
+    return `Booked ${bookings} times today`
+  }
+
   render() {
-    
     const { restaurant, reviews } = this.props;
-    console.log(this.props)
+
     return (
       <div>
-        <li>
-          {restaurant.name}
-          {reviews.length} reviews
-          {this.getPriceRange(restaurant.priceRange)}
+        <li className="restaurant-index-item">
+          <Link to={`/restaurants/${restaurant.id}`}><img className="restaurant-index-image" src={this.getBackgroundImage()} /></Link>
+          <div className="restaurant-index-item-information">
+            <Link to={`/restaurants/${restaurant.id}`}><div className="restaurant-index-item-name">{restaurant.name}</div></Link>
+            <div className="price-range-icons">{this.getPriceRange(restaurant.priceRange)}</div>
+            {reviews.length} reviews
+            <div className="booking-amount">
+              <IconChart size={20} color="#DA3743"/> {this.numBookings()}
+            </div>
+          </div>
         </li>
       </div>
     );

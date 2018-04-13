@@ -9,7 +9,6 @@ import {
 } from '../actions/review_actions';
 import merge from "lodash/merge";
 
-
 const RestaurantsReducer = (state = {}, action) => {
   console.log(action.payload)
   Object.freeze(state);

@@ -27,5 +27,8 @@ Rails.application.routes.draw do
       resources :cuisines, only: [:create]
       resources :payment_options, only: [:create]
     end
+
+    post 'users/addfavorite/:restaurantId', to: 'users#add_favorite'
+    delete 'users/removefavorite/:restaurantId', to: 'users#remove_favorite'
   end
 end
