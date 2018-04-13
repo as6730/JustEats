@@ -37,10 +37,27 @@ The challenge was to display the complex information embedded in each restaurant
 
 ### Dynamic and Engaging Visuals
 
-Signed in users can write reviews for restaurants, and can save them to their favorites. Additionally, code was always written with the intent to be true to the actual restaurant, and demonstrates the emphasis placed on the user's experience.
+Signed in users can write reviews for restaurants, and can save them to their favorites. Additionally, code was always written with the intent to be true to the actual restaurant, and demonstrates the emphasis placed on the user's experience. 
 
-### Creating and updating comments
+![restaurant_show_page](https://github.com/as6730/JustEats/blob/master/app/assets/images/screenshots/restaurant_show_page.png)
 
+### Searching for restaurants
+
+Users can search for restaurants and are returned an in-depth list due to the large database.
+
+![main_page](https://github.com/as6730/JustEats/blob/master/app/assets/images/screenshots/main_page.png)
+
+Creating the search was done through a query, which got all the entries for which the name contains the string that was searched for. This added breadth to the clone, and creates a more interactive user experience.
+
+```js
+  export const fetchRestaurants = (query) => {
+    console.log(query)
+    return $.ajax({
+      method: "GET",
+      url: `/api/restaurants?query=${query}`
+    });
+  }
+```
 ## Project Design
 
   * [Database Schema][dbSchema]

@@ -1,7 +1,7 @@
 class Api::RestaurantsController < ApplicationController
   def index
     query = params[:query]
-    
+
     if query.nil?
       @restaurants = Restaurant.last(50)
     else
