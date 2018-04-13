@@ -37,7 +37,7 @@ The challenge was to display the complex information embedded in each restaurant
 
 ### Dynamic and Engaging Visuals
 
-Signed in users can write reviews for restaurants, and can save them to their favorites. Additionally, code was always written with the intent to be true to the actual restaurant, and demonstrates the emphasis placed on the user's experience. 
+Signed in users can write reviews for restaurants, and can save them to their favorites. Additionally, code was always written with the intent to be true to the actual restaurant, and demonstrates the emphasis placed on the user's experience.
 
 ![restaurant_show_page](https://github.com/as6730/JustEats/blob/master/app/assets/images/screenshots/restaurant_show_page.png)
 
@@ -60,11 +60,13 @@ Creating the search was done through a query, which got all the entries for whic
 ```
 ## Project Design
 
-  * [Database Schema][dbSchema]
-  [dbSchema]: https://github.com/as6730/JustEats/wiki/schema
-
 JustEat was designed with clean interface in mind that reminded the user instantly of OpenTable. With the two-week time frame in mind, Time was spent ensuring that the restaurant show page was close to being pixel-perfect to the actual site, and that clickability would persist throughout the functionality. The project relied heavily on preproduction, in order to ensure a smooth creation. As OpenTable has many complex features, it was necessary to step into the process being fully familiar with the website and with a strong foundation, as is illustrated by the in-depth schema.
 
+![Database Schema](https://github.com/as6730/JustEats/wiki/schema)
+
+This is best illustrated by the table for a Restaurant, which had many associations and join tables. The schema illustrates the preproduction that was done in order to ensure a beautiful product.
+
+![restaurant_schema](https://github.com/as6730/JustEats/blob/master/app/assets/images/screenshots/restaurant_schema.png)
 
 ## Technologies
 
