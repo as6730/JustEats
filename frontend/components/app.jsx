@@ -9,6 +9,7 @@ import SignupFormContainer from "./session_form/signup_form_container";
 import RestaurantShowContainer from "./restaurant/restaurant_show_container";
 import RestaurantIndexContainer from "./restaurant/restaurant_index_container";
 import HomePage from "./restaurant/home_page";
+import MyAccountContainer from "./user/myaccount_container";
 
 // <Route exact path="/" component={GreetingContainer} />
 const App = () => (
@@ -31,6 +32,11 @@ const App = () => (
             exact
             path="/restaurants"
             component={RestaurantIndexContainer}
+          />
+          <Route
+            exact
+            path="/myaccount"
+            component={MyAccountContainer}
           />
         </Switch>
       </nav>

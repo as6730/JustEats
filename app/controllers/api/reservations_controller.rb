@@ -2,7 +2,7 @@ class Api::ReservationsController < ApplicationController
   before_action :require_user_login!
 
   def index
-    @reservations = Reservation.all
+    @reservations = Reservation.where(:user_id=>current_user.id)
   end
 
   def new
