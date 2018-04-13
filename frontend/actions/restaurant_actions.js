@@ -4,8 +4,8 @@ export const RECEIVE_ALL_RESTAURANTS = "RECEIVE_ALL_RESTAURANTS";
 export const RECEIVE_RESTAURANT = "RECEIVE_RESTAURANT";
 export const REMOVE_RESTAURANT = "REMOVE_RESTAURANT";
 
-export const fetchRestaurants = () => dispatch =>
-  APIUtil.fetchRestaurants().then(restaurants =>
+export const fetchRestaurants = (query) => dispatch =>
+  APIUtil.fetchRestaurants(query).then(restaurants =>
     dispatch(receiveAllRestaurants(restaurants))
   );
 
@@ -31,7 +31,7 @@ export const deleteRestaurant = restaurantId => dispatch =>
 //payload was missing
 const receiveAllRestaurants = restaurants => ({
   type: RECEIVE_ALL_RESTAURANTS,
-  payload: restaurants 
+  payload: restaurants
 });
 
 const receiveRestaurant = restaurant => ({

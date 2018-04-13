@@ -1,6 +1,12 @@
 class Api::RestaurantsController < ApplicationController
   def index
-    @restaurants = Restaurant.all
+    query = params[:query]
+    
+    if query.nil?
+      @restaurants = Restaurant.last(50)
+    else
+      @restaurants = Restaurant.where("lower(name) like ?", "#{query.downcase}%")
+    end
   end
 
   def create

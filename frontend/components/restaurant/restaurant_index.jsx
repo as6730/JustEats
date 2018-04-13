@@ -7,7 +7,10 @@ class RestaurantIndex extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchRestaurants();
+    let query = this.props.location.search;
+    query = query.substring(query.indexOf('=') + 1);
+
+    this.props.fetchRestaurants(query);
   }
 
   render() {
