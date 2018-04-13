@@ -3,7 +3,7 @@ require 'open-uri'
 require 'json'
 
 # links = ["https://www.opentable.com/r/seven-hills-san-francisco?page=1", "https://www.opentable.com/r/the-stinking-rose-san-francisco?page=1", "https://www.opentable.com/blue-hill?page=1", "https://www.opentable.com/harold-black?page=1", "https://www.opentable.com/seasons-restaurant-four-seasons-washington-dc?page=1", "https://www.opentable.com/r/tarbells-phoenix?page=1"]
-allRestaurants = Nokogiri::HTML(open("https://www.opentable.com/san-francisco-bay-area-restaurant-listings"))
+allRestaurants = Nokogiri::HTML(open("https://www.opentable.com/new-york-city-restaurants"))
 
 links = []
 
