@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import FeaturedPhotos from "./featured_photos";
 import HomePageSlickr from "./home_page_slickr";
 import { Link } from "react-router-dom";
+import IconGithub from 'react-icons/lib/fa/github-square';
+import IconLinkedIn from 'react-icons/lib/fa/linkedin-square';
 
 class HomePage extends Component {
   constructor(props) {
@@ -51,6 +53,15 @@ class HomePage extends Component {
         </div>
         <FeaturedPhotos />
         <footer className="footer">
+          <div className="footer-info">
+            Alexandra Savramis
+          </div>
+          <div className="footer-info">
+            <a href="https://github.com/as6730">Github Link: {<IconGithub className="github-icon" size={30}/>}</a>
+          </div>
+          <div className="footer-info">
+            <a href="https://www.linkedin.com/in/alexandrasavramis/">LinkedIn Profile: {<IconLinkedIn className="linkedin-icon" size={30}/>}</a>
+          </div>
         </footer>
       </div>
     )
