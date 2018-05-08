@@ -8,6 +8,22 @@ JustEat is a clone of OpenTable, a website that allows users to search through a
 
 The project was designed and built within a two-week timeframe, although I plan to continually add extra features and expand in order to achieve a fully cloned website.
 
+## Technologies
+
+Rails was chosen due to its flexibility and and well-supported framework. The pragmatism of Ruby allowed for a quick turnover in the creation of this project.
+
+Frontend Redux states were created in order to have individual reducers and actions for restaurants, reviews, favorites, users, and errors. This allows the state to have a true redux cycle that is dynamic to the changing database.
+
+## Project Design
+
+JustEat was designed with clean interface in mind that reminded the user instantly of OpenTable. With the two-week time frame in mind, Time was spent ensuring that the restaurant show page was close to being pixel-perfect to the actual site, and that clickability would persist throughout the functionality. The project relied heavily on preproduction, in order to ensure a smooth creation. As OpenTable has many complex features, it was necessary to step into the process being fully familiar with the website and with a strong foundation, as is illustrated by the in-depth schema.
+
+![Database Schema](https://github.com/as6730/JustEats/wiki/schema)
+
+This is best illustrated by the table for a Restaurant, which had many associations and join tables. The schema illustrates the preproduction that was done in order to ensure a beautiful product.
+
+![restaurant_schema](https://github.com/as6730/JustEats/blob/master/app/assets/images/screenshots/restaurant_schema.png)
+
 ### Scrapper
 
 The challenge was to display the complex information embedded in each restaurant show page. Emphasis was placed upon creating a scrapper that would dynamically scrape information from a variety of locations. The scrapper allows the clone to become more engaging, as searching will yield a large pool of restaurants. Additionally, scraping allowed the restaurant show page to be an almost pixel-perfect clone of the restaurant show page on OpenTable, and includes true information pertaining to the restaurant.  
@@ -58,22 +74,6 @@ Creating the search was done through a query, which got all the entries for whic
     });
   }
 ```
-## Project Design
-
-JustEat was designed with clean interface in mind that reminded the user instantly of OpenTable. With the two-week time frame in mind, Time was spent ensuring that the restaurant show page was close to being pixel-perfect to the actual site, and that clickability would persist throughout the functionality. The project relied heavily on preproduction, in order to ensure a smooth creation. As OpenTable has many complex features, it was necessary to step into the process being fully familiar with the website and with a strong foundation, as is illustrated by the in-depth schema.
-
-![Database Schema](https://github.com/as6730/JustEats/wiki/schema)
-
-This is best illustrated by the table for a Restaurant, which had many associations and join tables. The schema illustrates the preproduction that was done in order to ensure a beautiful product.
-
-![restaurant_schema](https://github.com/as6730/JustEats/blob/master/app/assets/images/screenshots/restaurant_schema.png)
-
-## Technologies
-
-Rails was chosen due to its flexibility and and well-supported framework. The pragmatism of Ruby allowed for a quick turnover in the creation of this project.
-
-Frontend Redux states were created in order to have individual reducers and actions for restaurants, reviews, favorites, users, and errors. This allows the state to have a true redux cycle that is dynamic to the changing database.
-
 ### Additional Resources
   * [Proposal Wireframes][wireframes]
   * [API Endpoints][apiEndPoints]
