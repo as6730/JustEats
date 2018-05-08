@@ -150,23 +150,27 @@
   cursor: pointer;
 }
 
-
 .footer {
   margin-top: 50px;
   background: #383838;
   border-top: 1px solid rgba(0,0,0,.12);
-  height: 150px;
+  height: 100px;
   width: 100%;
 }
 
 .footer-info {
-  size: 30px;
   color: white;
   display: flex;
+  flex-direction: row;
   justify-content: flex-end;
-  font-family: sans-serif;
-  padding: 10px;
   align-items: center;
+  margin: 20px;
+  font-family: sans-serif;
+  align-items: center;
+}
+
+.footer-info a {
+  margin: 8px;
 }
 
 // buttons
