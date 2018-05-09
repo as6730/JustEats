@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import IconFullBookmark from "react-icons/lib/fa/bookmark";
 // footer contact icons
 import IconGithub from 'react-icons/lib/fa/github';
@@ -44,7 +45,7 @@ class MyAccount extends Component {
     let reservationsArr = reservations.map((reservation, idx) => {
       return (
         <div key={idx} className={"reservation-item"}>
-          {reservation.restaurant.name}
+          <Link to={`/restaurants/${reservation.restaurant.id}`}>{reservation.restaurant.name}</Link>
           <div className="reservation-item-info">
             <div className="res-info-title">
               PartySize:
@@ -83,7 +84,7 @@ class MyAccount extends Component {
     let favorited = favorites.map((favorite, idx) => {
       return (
         <div key={idx} className={"favorites"}>
-          <IconFullHeart className="favorite-icon" size={18} color={"#da3743"}/> {favorite.name}
+          <IconFullBookmark className="favorite-icon" size={12} color={"#da3743"}/> {favorite.name}
         </div>
       )}
     )
