@@ -48,7 +48,7 @@
 .restaurant-index-item {
   height: 180px;
   width: 760px;
-  border-bottom: 1px solid rgba(0,0,0,.08);
+  border-bottom: 2px solid rgba(0,0,0,.08);
   list-style-type: none;
   display: flex;
   justify-content: row;
@@ -80,10 +80,13 @@
   height: 20px;
   width: 28px;
   color: black;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .booking-amount {
   font-size: 13px;
+  margin-top: 5px;
 }
 
 .search-image {

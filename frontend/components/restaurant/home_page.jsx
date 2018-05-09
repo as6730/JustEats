@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import FeaturedPhotos from "./featured_photos";
 import HomePageSlickr from "./home_page_slickr";
 import { Link } from "react-router-dom";
+
+// footer contact icons
 import IconGithub from 'react-icons/lib/fa/github';
 import IconLinkedIn from 'react-icons/lib/fa/linkedin';
 import IconAngellist from 'react-icons/lib/fa/angellist';

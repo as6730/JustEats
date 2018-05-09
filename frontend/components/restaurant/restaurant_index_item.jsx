@@ -7,42 +7,14 @@ class RestaurantIndexItem extends Component {
     super(props);
   }
 
-  // getRestaurantStars(rating) {
-  //   let stars = [];
-  //   let ratingNum = Math.round(rating * 10) / 10;
-  //   let halfStar = ratingNum;
-  //
-  //   for (let i = 0; i < Math.floor(ratingNum); i++ ) {
-  //     stars.push(<IconStar key={i} color="#da3743" />)
-  //     halfStar--;
-  //   }
-  //
-  //   if (halfStar >= 0.5) {
-  //     stars.push(<IconHalfStar key={avg} color="#da3743" />)
-  //   }
-  //
-  //   while (stars.length < 5) {
-  //     stars.push(<IconStarEmpty key={stars.length} color="#da3743" />)
-  //   }
-  //
-  //   return stars;
-  // }
-  //
-  // renderStars() {
-  //
-  //   restaurant.reviews.map((review) => {
-  //     this.renderStars(review.rating);
-  //   })
-  // }
-  //
-  // getRecommendationPercentage() {
-  //   let sum = 0;
-  //   restaurant.reviews.map((review) => {
-  //     sum += review.rating;
-  //   })
-  //
-  //   avgRating =  Math.floor(sum / restaurant.reviews.length) % 100;
-  // }
+  getRecommendationPercentage() {
+    let sum = 0;
+    restaurant.reviews.map((review) => {
+      sum += review.rating;
+    })
+
+    avgRating =  Math.floor(sum / restaurant.reviews.length) % 100;
+  }
 
   getPriceRange(priceRange) {
     switch (priceRange) {
@@ -87,14 +59,21 @@ class RestaurantIndexItem extends Component {
             <div className="booking-amount">
               <IconChart size={20} color="#DA3743"/> {this.numBookings()}
             </div>
+            <div className="view-restaurant">
+              <Link to={`/restaurants/${restaurant.id}`}>
+                <div className="restaurant-index-item-name">
+                  <button onClick={() => {}}
+                    className="btn-view">
+                    Find a Table
+                  </button>
+                </div>
+              </Link>
+            </div>
           </div>
         </li>
       </div>
     );
   }
 };
-
-//  {this.renderStars(restaurant.reviews.rating)}
-//  {this.getRecommendationPercentage()}
 
 export default RestaurantIndexItem;

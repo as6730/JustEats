@@ -1,5 +1,9 @@
 import React, { Component } from "react";
-import IconFullHeart from "react-icons/lib/fa/heart";
+import IconFullBookmark from "react-icons/lib/fa/bookmark";
+// footer contact icons
+import IconGithub from 'react-icons/lib/fa/github';
+import IconLinkedIn from 'react-icons/lib/fa/linkedin';
+import IconAngellist from 'react-icons/lib/fa/angellist';
 
 class MyAccount extends Component {
   constructor(props) {
@@ -87,20 +91,6 @@ class MyAccount extends Component {
     return favorited;
   }
 
-  // {this.isRestaurantInFavorites() ?
-  //   <button
-  //     onClick={() => this.props.removeFavorite(this.props.favorites.restaurant.id) }
-  //     className="btn-favorite">
-  //     {<IconFullHeart className="favorite-icon" size={18} color={"#da3743"}/>}  {favorite.name}
-  //   </button>
-  // :
-  //   <button
-  //     onClick={() => this.props.addFavorite(this.props.favorites.restaurant.id) }
-  //     className="btn-favorite">
-  //     {<IconHeart className="favorite-icon" size={18}/>}  {favorite.name}
-  //   </button>
-  // }
-
   getUserPoints() {
     let reservations = Object.values(this.props.reservations);
     if (this.props.reservations.length !== 0 || this.props.reservations.length != undefined) {
@@ -137,6 +127,15 @@ class MyAccount extends Component {
             </div>
           </div>
         </div>
+
+        <footer className="footer">
+          <div className="footer-info">
+            Alexandra Savramis
+            <a href="https://angel.co/alexandra-savramis">{<IconAngellist className="angellist-icon" size={15}/>}</a>
+            <a href="https://www.linkedin.com/in/alexandrasavramis/">{<IconLinkedIn className="linkedin-icon" size={20}/>}</a>
+            <a href="https://github.com/as6730">{<IconGithub className="github-icon" size={20}/>}</a>
+          </div>
+        </footer>
       </div>
     );
   }

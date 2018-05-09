@@ -32,7 +32,7 @@ class RestaurantReviews extends Component {
     const { currentUser, showReviewForm } = this.props;
 
     return (
-      <div>
+      <div> 
         {(currentUser != null) ?
           !this.hasReview() &&
             <div>

@@ -2,6 +2,11 @@ import React, { Component } from "react";
 import RestaurantIndexItem from './restaurant_index_item';
 import { Link } from "react-router-dom";
 
+// footer contact icons
+import IconGithub from 'react-icons/lib/fa/github';
+import IconLinkedIn from 'react-icons/lib/fa/linkedin';
+import IconAngellist from 'react-icons/lib/fa/angellist';
+
 class RestaurantIndex extends Component {
   constructor(props) {
     super(props);
@@ -57,9 +62,6 @@ class RestaurantIndex extends Component {
           </div>
         </div>
         <div className="index-wrapper">
-          <div className="index-side-column">
-            <img className="visual-map-image" src="http://media.otstatic.com/search-result-node/images/mapImage@2x.e764d473.png"/>
-          </div>
           <div className="search-results-container">
             <ul>
               {restaurants}
@@ -71,6 +73,14 @@ class RestaurantIndex extends Component {
   }
 }
 
-// <img className="visual-map-text" src="http://media.otstatic.com/search-result-node/images/compressed/pinIcon.dbf100dd.svg" />
+// <footer className="footer">
+//   <div className="footer-info">
+//     Alexandra Savramis
+//     <a href="https://angel.co/alexandra-savramis">{<IconAngellist className="angellist-icon" size={15}/>}</a>
+//     <a href="https://www.linkedin.com/in/alexandrasavramis/">{<IconLinkedIn className="linkedin-icon" size={20}/>}</a>
+//     <a href="https://github.com/as6730">{<IconGithub className="github-icon" size={20}/>}</a>
+//   </div>
+// </footer>
+
 
 export default RestaurantIndex;
