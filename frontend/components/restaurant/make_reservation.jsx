@@ -118,6 +118,10 @@ class MakeReservation extends Component {
     this.props.createReservation(this.props.restaurant.id, reservation);
   }
 
+  isRestaurantReserved() {
+    return Object.keys(this.props.reservations).filter(restaurantId => parseInt(restaurantId) === this.props.restaurant.id).length > 0
+  }
+
   isRestaurantInFavorites() {
     return Object.keys(this.props.favorites).filter(restaurantId => parseInt(restaurantId) === this.props.restaurant.id).length > 0
   }
@@ -143,11 +147,19 @@ class MakeReservation extends Component {
             </div>
             {this.timeOptions()}
           </div>
-          <button
-            onClick={() => this.processAndCreateReservation()}
-            className="btn-submit-reservation">
-            Reserve a Table
-          </button>
+          {this.isRestaurantReserved() ?
+              <button
+                onClick={() => this.props.deleteReservation(this.props.restaurant.id)}
+                className="btn-submit-reservation">
+                Reserved
+              </button>
+          :
+              <button
+                onClick={() => this.processAndCreateReservation()}
+                className="btn-submit-reservation">
+                Reserve a Table
+              </button>
+          }
           <div className="bookingAmt">
             {<IconChart size={20}/>} {this.numBookings()}
           </div>
@@ -170,20 +182,4 @@ class MakeReservation extends Component {
   }
 }
 
-
-// change this for the reservation when user has a table
-
-// {this.isRestaurantInFavorites() ?
-//   <button
-//     onClick={() => this.props.removeFavorite(this.props.restaurant.id) }
-//     className="btn-favorite">
-//     {<IconFullBookmark className="favorite-icon" size={18} color={"#da3743"}/>}  Remove from Favorites
-//   </button>
-// :
-//   <button
-//     onClick={() => this.props.addFavorite(this.props.restaurant.id) }
-//     className="btn-favorite">
-//     {<IconBookmark className="favorite-icon" size={18}/>}  Save to Favorites
-//   </button>
-// }
 export default MakeReservation;

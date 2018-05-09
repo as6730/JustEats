@@ -28,7 +28,8 @@ export const deleteRestaurant = restaurantId => dispatch =>
   APIUtil.deleteRestaurant(restaurantId).then(restaurant =>
     dispatch(removeRestaurant(restaurantId))
   );
-//payload was missing
+
+
 const receiveAllRestaurants = restaurants => ({
   type: RECEIVE_ALL_RESTAURANTS,
   payload: restaurants

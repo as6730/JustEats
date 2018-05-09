@@ -18,6 +18,7 @@ class RestaurantShow extends Component {
   componentDidMount() {
     this.props.fetchRestaurant(this.props.match.params.restaurantId);
     this.props.getUserFavorites();
+    this.props.fetchReservations();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -106,6 +107,7 @@ class RestaurantShow extends Component {
             addFavorite={this.props.addFavorite}
             favorites={this.props.favorites}
             removeFavorite={this.props.removeFavorite}
+            reservations={this.props.reservations}
             createReservation={this.props.createReservation}
             deleteReservation={this.props.deleteReservation}
           />
