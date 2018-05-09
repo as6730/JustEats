@@ -21,38 +21,50 @@ class Api::UsersController < ApplicationController
   end
 
   def get_favorites
-    favorites = RestaurantFavorite.where(:user_id=>current_user.id)
+    if current_user
+      favorites = RestaurantFavorite.where(:user_id=>current_user.id)
 
-    favorite_restaurants = {}
-    favorites.each do |favorite|
-      restaurant = Restaurant.where(:id=>favorite.restaurant_id).first
-      favorite_restaurants[restaurant.id] = restaurant unless restaurant.nil?
+      favorite_restaurants = {}
+      favorites.each do |favorite|
+        restaurant = Restaurant.where(:id=>favorite.restaurant_id).first
+        favorite_restaurants[restaurant.id] = restaurant unless restaurant.nil?
+      end
+
+      render json: favorite_restaurants
+    else
+      render json: {}
     end
-
-    render json: favorite_restaurants
   end
 
   def add_favorite
-    @favorite = RestaurantFavorite.where(:user_id=>current_user.id).where(:restaurant_id=>params[:restaurantId]).first
+    if current_user
+      @favorite = RestaurantFavorite.where(:user_id=>current_user.id).where(:restaurant_id=>params[:restaurantId]).first
 
-    if @favorite.nil?
-      @favorite = RestaurantFavorite.new()
-      @favorite.restaurant_id = params[:restaurantId]
-      @favorite.user_id = current_user.id
-      @favorite.save!
+      if @favorite.nil?
+        @favorite = RestaurantFavorite.new()
+        @favorite.restaurant_id = params[:restaurantId]
+        @favorite.user_id = current_user.id
+        @favorite.save!
+      end
+
+      render json: Restaurant.where(:id=>@favorite.restaurant_id).first
+    else
+      render json: {}
     end
-
-    render json: Restaurant.where(:id=>@favorite.restaurant_id).first
   end
 
   def remove_favorite
-    @favorite = RestaurantFavorite.where(:user_id=>current_user.id).where(:restaurant_id=>params[:restaurantId]).first
+    if current_user
+      @favorite = RestaurantFavorite.where(:user_id=>current_user.id).where(:restaurant_id=>params[:restaurantId]).first
 
-    if @favorite
-      @favorite.destroy!
+      if @favorite
+        @favorite.destroy!
+      end
+
+      render json: @favorite.restaurant_id
+    else
+      render json: {}
     end
-
-    render json: @favorite.restaurant_id
   end
 
   private

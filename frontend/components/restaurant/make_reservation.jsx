@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import IconChart from "react-icons/lib/io/arrow-graph-up-right";
-import IconHeart from "react-icons/lib/fa/heart-o";
-import IconFullHeart from "react-icons/lib/fa/heart";
+import IconHeart from "react-icons/lib/fa/bookmark-o";
+import IconFullHeart from "react-icons/lib/fa/bookmark";
 
 class MakeReservation extends Component {
   constructor(props) {

@@ -53,7 +53,7 @@ class RestaurantShow extends Component {
     const restaurant = this.props.restaurant;
     const { expanded } = this.state;
     const toggledClass = expanded ? 'expanded' : 'collapsed';
-    if (!this.props.restaurant) return <div/>
+    if (!this.props.restaurant) return <div />
     return (
       <div className="restaurant-container">
         <div className="banner-image-container">

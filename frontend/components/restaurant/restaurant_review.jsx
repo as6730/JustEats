@@ -93,13 +93,13 @@ class RestaurantReview extends Component {
             <IconHelpful size={20} /> Helpful
           </div>
             {
-              this.props.currentUser.username === this.props.review.username &&
+              this.props.currentUser !== null && this.props.currentUser.username === this.props.review.username &&
               <div className="footer-icon" onClick={() => this.props.deleteReview(review.id)}>
                 <IconDelete size={20} /> Delete
               </div>
             }
             {
-              (this.props.currentUser.username === this.props.review.username) &&
+              this.props.currentUser !== null && this.props.currentUser.username === this.props.review.username &&
               <div className="footer-icon" onClick={this.props.editReview}>
                 <IconEdit size={20} /> Edit
               </div>
