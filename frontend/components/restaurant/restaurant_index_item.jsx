@@ -50,23 +50,23 @@ class RestaurantIndexItem extends Component {
 
     return (
       <div>
-        <li className="restaurant-index-item">
-          <Link to={`/restaurants/${restaurant.id}`}><img className="restaurant-index-image" src={this.getBackgroundImage()} /></Link>
-          <div className="restaurant-index-item-information">
-            <Link to={`/restaurants/${restaurant.id}`}><div className="restaurant-index-item-name">{restaurant.name}</div></Link>
-            <div className="price-range-icons">{this.getPriceRange(restaurant.priceRange)}</div>
-            {reviews.length} reviews
-            <div className="booking-amount">
-              <IconChart size={20} color="#DA3743"/> {this.numBookings()}
+        <li>
+          <div className="restaurant-index-item">
+            <Link to={`/restaurants/${restaurant.id}`}><img className="restaurant-index-image" src={this.getBackgroundImage()} /></Link>
+            <div className="restaurant-index-item-information">
+              <Link to={`/restaurants/${restaurant.id}`}><div className="restaurant-index-item-name">{restaurant.name}</div></Link>
+              <div className="price-range-icons">{this.getPriceRange(restaurant.priceRange)}</div>
+              {reviews.length} reviews
+              <div className="booking-amount">
+                <IconChart size={20} color="#DA3743"/> {this.numBookings()}
+              </div>
             </div>
             <div className="view-restaurant">
               <Link to={`/restaurants/${restaurant.id}`}>
-                <div className="restaurant-index-item-name">
-                  <button onClick={() => {}}
-                    className="btn-view">
-                    Find a Table
-                  </button>
-                </div>
+                <button
+                  className="btn-view-restaurant">
+                  Find a Table
+                </button>
               </Link>
             </div>
           </div>
