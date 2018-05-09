@@ -16,20 +16,19 @@ class MyAccount extends Component {
     this.props.fetchReservations();
   }
 
-  // getBackgroundImage(reservation.restaurant) {
+  // getBackgroundImage(reservation) {
   //   const img = reservation.restaurant.background_image;
   //   const photos = reservation.restaurant.photos;
   //
-  //   // <img className="banner-image" src={this.getBackgroundImage({reservation.restaurant})} />
-  //
   //   if (img != null) {
   //     return img;
-  //   } else if (photos.length === 0) {
+  //   } else if (photos.length === 0 || photos != null) {
   //     return "";
   //   }
   //
   //   return photos[0].url;
   // }
+  // <Link to={`/restaurants/${reservation.restaurant.id}`}><img className="restaurant-index-image" src={this.getBackgroundImage(reservation)} /></Link>
 
   getReservations() {
     let reservations = Object.values(this.props.reservations);

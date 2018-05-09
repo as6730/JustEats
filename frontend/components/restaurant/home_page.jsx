@@ -68,8 +68,4 @@ class HomePage extends Component {
   }
 }
 
-// {this.partySizeOptions()}
-// {this.dateOptions()}
-// {this.timeOptions()}
-
 export default HomePage;
