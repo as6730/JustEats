@@ -57,6 +57,4 @@ class ReviewModal extends PureComponent {
   }
 }
 
-// <div className="error">{this.props.errors[0]}</div>
-
 export default ReviewModal;

@@ -6,11 +6,7 @@ import RestaurantSpecifics from "./restaurant_specifics";
 import PhotoGallery from "./photo_gallery";
 import RestaurantReviews from "./restaurant_reviews";
 import MakeReservation from "./make_reservation";
-
-// footer contact icons
-import IconGithub from 'react-icons/lib/fa/github';
-import IconLinkedIn from 'react-icons/lib/fa/linkedin';
-import IconAngellist from 'react-icons/lib/fa/angellist';
+import { Footer } from "./footer";
 
 class RestaurantShow extends Component {
   constructor(props) {
@@ -117,22 +113,11 @@ class RestaurantShow extends Component {
             deleteReservation={this.props.deleteReservation}
           />
         </div>
+        <Footer />
       </div>
     )
   }
 }
-
-// <div>
-//   <footer className="footer">
-//     <div className="footer-info">
-//       Alexandra Savramis
-//       <a href="https://angel.co/alexandra-savramis">{<IconAngellist className="angellist-icon" size={15}/>}</a>
-//       <a href="https://www.linkedin.com/in/alexandrasavramis/">{<IconLinkedIn className="linkedin-icon" size={20}/>}</a>
-//       <a href="https://github.com/as6730">{<IconGithub className="github-icon" size={20}/>}</a>
-//     </div>
-//   </footer>
-// </div>
-
 
 
 export default withRouter(RestaurantShow);
