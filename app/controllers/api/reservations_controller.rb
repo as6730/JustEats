@@ -1,5 +1,5 @@
 class Api::ReservationsController < ApplicationController
-  before_action :require_user_login!
+  # before_action :require_user_login!
 
   def index
     @reservations = Reservation.where(:user_id=>current_user.id)

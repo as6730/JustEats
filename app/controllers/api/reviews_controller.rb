@@ -1,5 +1,5 @@
 class Api::ReviewsController < ApplicationController
-  before_action :require_user_login!
+  # before_action :require_user_login!
 
   def index
     @reviews = Review.where(restaurant_id: params[:restaurant_id])
@@ -14,7 +14,7 @@ class Api::ReviewsController < ApplicationController
 
   def create
     @review = Review.new(JSON.parse(request.body.read))
-    @review.username = current_user.username
+    # @review.username = current_user.username
     @review.restaurant_id = params[:restaurant_id]
 
     if @review.save
