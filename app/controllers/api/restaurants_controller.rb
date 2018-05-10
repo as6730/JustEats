@@ -2,10 +2,16 @@ class Api::RestaurantsController < ApplicationController
   def index
     query = params[:query]
 
-    if query.nil?
+    if query.nil? || query.empty?
       @restaurants = Restaurant.last(50)
     else
       @restaurants = Restaurant.where("lower(name) like ?", "#{query.downcase}%")
+
+      if @restaurants.empty?
+        @restaurants = Restaurant.last(50)
+      else
+        @restaurants
+      end
     end
   end
 
