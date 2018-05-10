@@ -11,31 +11,24 @@ class RestaurantIndex extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchbarText: ""
+      searchbarText: this.getQueryString()
     }
   }
 
+  getQueryString(){
+    return this.props.location.search.substring(this.props.location.search.indexOf('=') + 1)
+  }
+
   onSearch(e) {
-    this.setState({ searchbarText: e.target.value })
+    e.preventDefault();
+    this.setState({ searchbarText: e.target.value });
   }
 
   componentDidMount() {
-    let query = this.props.location.search;
-    query = query.substring(query.indexOf('=') + 1);
-
-    this.props.fetchRestaurants(query);
+    this.props.fetchRestaurants(this.getQueryString());
   }
 
   render() {
-    const restaurants = this.props.restaurants.map(restaurant => {
-      return (
-        <RestaurantIndexItem
-          key={restaurant.id}
-          restaurant={restaurant}
-          reviews={restaurant.reviews} />
-      );
-    });
-
     return (
       <div>
         <img className="search-image" src="//media.otstatic.com/search-result-node/images/background-blur.0a50ba84.png" />
@@ -53,18 +46,28 @@ class RestaurantIndex extends Component {
             />
           </div>
           <div className="content-body">
-            <Link to={`/restaurants?query=${this.state.searchbarText}`}>
               <button
-                className="home-btn-submit-reservation">
+                className="home-btn-submit-reservation"
+                onClick={() => {
+                  this.props.history.push(`/restaurants?query=${this.state.searchbarText}`)
+                  this.props.fetchRestaurants(this.state.searchbarText);
+                }}>
                 Find a Restaurant
               </button>
-            </Link>
           </div>
         </div>
         <div className="index-wrapper">
           <div className="search-results-container">
             <ul>
-              {restaurants}
+              {this.props.restaurants.map(restaurant => {
+                return (
+                  <RestaurantIndexItem
+                    key={restaurant.id}
+                    restaurant={restaurant}
+                    reviews={restaurant.reviews} />
+                );
+              })
+              }
             </ul>
           </div>
         </div>
