@@ -54,10 +54,10 @@ class Greeting extends Component {
                   Sign up
                 </button>
                 <button onClick={() => {
-                    this.setState({showLogin: true, showSignUp: false})
+                    this.onLogin("DemoUser", "password")
                   }}
                   className="btn-signin">
-                  Sign in
+                  Demo User
                 </button>
               </nav>
           :

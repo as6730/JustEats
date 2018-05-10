@@ -33,12 +33,12 @@ class RestaurantIndex extends Component {
 
   render() {
     return (
-      <div>
+      <div className="restaurant-index-container">
         <img className="search-image" src="//media.otstatic.com/search-result-node/images/background-blur.0a50ba84.png" />
         <div className="search-bar-container">
           <div className="index-search-bar-header">
             <h1 className="index-page-header-title">
-              All San Francisco Bay Area restaurants
+              Find a Restaurant
             </h1>
             <input
               placeholder="Search for a restaurant by name"

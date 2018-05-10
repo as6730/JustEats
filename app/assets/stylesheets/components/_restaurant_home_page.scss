@@ -21,6 +21,13 @@
   background-size: contain;
 }
 
+.restaurant-index-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .search-bar-container {
   position: relative;
   width: 1049px;
