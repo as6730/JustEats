@@ -17,7 +17,14 @@ class HomePage extends Component {
   }
 
   onSearch(e) {
+    e.preventDefault();
     this.setState({ searchbarText: e.target.value })
+  }
+
+  handleKeyPress(e) {
+    if (e.key === 'Enter') {
+      this.props.history.push(`/restaurants?query=${this.state.searchbarText}`);
+    }
   }
 
   render() {
@@ -37,6 +44,7 @@ class HomePage extends Component {
               type="text"
               value={this.state.searchbarText}
               onChange={this.onSearch.bind(this)}
+              onKeyPress={this.handleKeyPress.bind(this)}
             />
           </div>
           <div className="content-body">

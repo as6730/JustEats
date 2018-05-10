@@ -19,13 +19,19 @@ class RestaurantIndex extends Component {
     return this.props.location.search.substring(this.props.location.search.indexOf('=') + 1)
   }
 
-  onSearch(e) {
+  onSearchTextChange(e) {
     e.preventDefault();
     this.setState({ searchbarText: e.target.value });
   }
 
   componentDidMount() {
     this.props.fetchRestaurants(this.getQueryString());
+  }
+
+  handleKeyPress(e) {
+    if (e.key === 'Enter') {
+      this.props.fetchRestaurants(this.state.searchbarText);
+    }
   }
 
   render() {
@@ -42,7 +48,8 @@ class RestaurantIndex extends Component {
               className="index-search-bar"
               type="text"
               value={this.state.searchbarText}
-              onChange={this.onSearch.bind(this)}
+              onChange={this.onSearchTextChange.bind(this)}
+              onKeyPress={this.handleKeyPress.bind(this)}
             />
           </div>
           <div className="content-body">
