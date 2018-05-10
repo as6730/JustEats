@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import IconFullBookmark from "react-icons/lib/fa/bookmark";
-// footer contact icons
-import IconGithub from 'react-icons/lib/fa/github';
-import IconLinkedIn from 'react-icons/lib/fa/linkedin';
-import IconAngellist from 'react-icons/lib/fa/angellist';
+import { Footer } from "../restaurant/footer";
 
 class MyAccount extends Component {
   constructor(props) {
@@ -15,20 +12,6 @@ class MyAccount extends Component {
     this.props.getUserFavorites();
     this.props.fetchReservations();
   }
-
-  // getBackgroundImage(reservation) {
-  //   const img = reservation.restaurant.background_image;
-  //   const photos = reservation.restaurant.photos;
-  //
-  //   if (img != null) {
-  //     return img;
-  //   } else if (photos.length === 0 || photos != null) {
-  //     return "";
-  //   }
-  //
-  //   return photos[0].url;
-  // }
-  // <Link to={`/restaurants/${reservation.restaurant.id}`}><img className="restaurant-index-image" src={this.getBackgroundImage(reservation)} /></Link>
 
   getReservations() {
     let reservations = Object.values(this.props.reservations);
@@ -44,7 +27,7 @@ class MyAccount extends Component {
     let reservationsArr = reservations.map((reservation, idx) => {
       return (
         <div key={idx} className={"reservation-item"}>
-          <Link to={`/restaurants/${reservation.restaurant.id}`}>{reservation.restaurant.name}</Link>
+          <Link to={`/restaurants/${reservation.restaurantId}`}>{reservation.restaurant === undefined ? '' : reservation.restaurant.name}</Link>
           <div className="reservation-item-info">
             <div className="res-info-title">
               PartySize:
@@ -127,15 +110,7 @@ class MyAccount extends Component {
             </div>
           </div>
         </div>
-
-        <footer className="footer">
-          <div className="footer-info">
-            Alexandra Savramis
-            <a href="https://angel.co/alexandra-savramis">{<IconAngellist className="angellist-icon" size={15}/>}</a>
-            <a href="https://www.linkedin.com/in/alexandrasavramis/">{<IconLinkedIn className="linkedin-icon" size={20}/>}</a>
-            <a href="https://github.com/as6730">{<IconGithub className="github-icon" size={20}/>}</a>
-          </div>
-        </footer>
+        <Footer />
       </div>
     );
   }

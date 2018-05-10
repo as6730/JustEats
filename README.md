@@ -67,7 +67,6 @@ Creating the search was done through a query, which got all the entries for whic
 
 ```js
   export const fetchRestaurants = (query) => {
-    console.log(query)
     return $.ajax({
       method: "GET",
       url: `/api/restaurants?query=${query}`

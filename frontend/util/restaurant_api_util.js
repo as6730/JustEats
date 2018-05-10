@@ -1,5 +1,4 @@
 export const fetchRestaurants = (query) => {
-  console.log(query)
   return $.ajax({
     method: "GET",
     url: `/api/restaurants?query=${query}`

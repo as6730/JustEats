@@ -119,7 +119,6 @@ class MakeReservation extends Component {
   }
 
   isRestaurantReserved() {
-    console.log("restaurant reserved");
     return Object.values(this.props.reservations).filter(restaurant => parseInt(restaurant.restaurantId) === this.props.restaurant.id).length > 0
   }
 
