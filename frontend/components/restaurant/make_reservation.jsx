@@ -119,11 +119,18 @@ class MakeReservation extends Component {
   }
 
   isRestaurantReserved() {
-    return Object.keys(this.props.reservations).filter(restaurantId => parseInt(restaurantId) === this.props.restaurant.id).length > 0
+    console.log("restaurant reserved");
+    return Object.values(this.props.reservations).filter(restaurant => parseInt(restaurant.restaurantId) === this.props.restaurant.id).length > 0
   }
 
   isRestaurantInFavorites() {
     return Object.keys(this.props.favorites).filter(restaurantId => parseInt(restaurantId) === this.props.restaurant.id).length > 0
+  }
+
+  getReservationId() {
+    let reservations = Object.values(this.props.reservations).filter(restaurant => parseInt(restaurant.restaurantId) === this.props.restaurant.id);
+
+    return reservations.length === 0 ? '' : reservations[0].id
   }
 
   render() {
@@ -149,7 +156,7 @@ class MakeReservation extends Component {
           </div>
           {this.isRestaurantReserved() ?
               <button
-                onClick={() => this.props.deleteReservation(this.props.restaurant.id)}
+                onClick={() => this.props.deleteReservation(this.getReservationId())}
                 className="btn-submit-reservation">
                 Reserved
               </button>
